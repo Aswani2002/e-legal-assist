@@ -1,0 +1,500 @@
+<table class="table align-middle table-nowrap table-striped-columns mb-0">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Office ID</th>
+            <th scope="col">Office Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Location</th>
+            <th scope="col">Contact No</th>
+            <th scope="col">Email</th>
+            <th scope="col" style="width: 150px;">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for office in offices %}
+        <tr>
+            <td>{{ office.office_id }}</td>
+
+            <td>
+                {{ office.office_name|slice:":40" }}{% if office.office_name|length > 40 %}...{% endif %}
+            </td>
+
+            <td>
+                {{ office.address|slice:":45" }}{% if office.address|length > 45 %}...{% endif %}
+            </td>
+
+            <td>{{ office.location }}</td>
+            <td>{{ office.contact_no }}</td>
+            <td>{{ office.email }}</td>
+
+            <td>
+                <a href="{% url 'admin_legal_office_detailed_view' office.office_id %}" 
+                   class="btn btn-sm btn-danger">
+                    View
+                </a>
+                
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center text-muted">No legal offices added yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<h2>Admin – Manage Legal Templates</h2>
+<p><a href="{% url 'addtemplate' %}">Add New Template</a></p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Created</th>
+        <th>Actions</th>
+    </tr>
+    {% for t in templates %}
+    <tr>
+        <td>{{ t.template_id }}</td>
+        <td>{{ t.template_name }}</td>
+        <td>{{ t.category }}</td>
+        <td>{{ t.created_at }}</td>
+        <td>
+            <a href="{% url 'edit_template' t.template_id %}">Edit</a> |
+            <a href="{% url 'delete_template' t.template_id %}">Delete</a> |
+            <a href="{% url 'fill_template' t.template_id %}">Preview</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No templates yet.</td></tr>
+    {% endfor %}
+</table>
+
+
+
+
+<i class='bx bx-fullscreen fs-22'></i>
+
+<img src="{{ adv.image.url }}" width="60" height="60" style="border-radius:8px;" />
+
+
+
+Advocate.objects.create(
+    advocate_name=advocate_name,
+    specialization=specialization,
+    email=email,
+    password=hashed_password,
+    experience_years=experience_years,
+    location=location,
+    availability_status=availability_status,
+    image=image,
+    qualification=qualification,
+    state_bar_council=state_bar_council,
+    enrollment_number=enrollment_number,    # FIXED
+    bar_council_idcard=bar_council_idcard,  # WILL NOW SAVE
+    is_verified=False
+)
+
+AIzaSyD73LYX8gCLyqaPFbA_Dz0rKulilecO5v0
+
+
+
+user_email = request.session.get("user_email")   # <--- IMPORTANT
+user = UserData.objects.get(email=user_email) 
+
+
+
+
+<!doctype html>
+{% load static %}
+<html lang="en"
+      data-layout="vertical"
+      data-topbar="light"
+      data-sidebar="dark"
+      data-sidebar-size="lg"
+      data-sidebar-image="none"
+      data-preloader="disable"
+      data-theme="default"
+      data-theme-colors="default">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADMIN | HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{% static 'assets1/images/favicon.ico' %}">
+    <script src="{% static 'assets1/js/layout.js' %}"></script>
+    <link href="{% static 'assets1/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets1/css/icons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets1/css/app.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets1/css/custom.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Theme Colors & Scrollbar -->
+    <style>
+        :root {
+            --vz-primary: #C89D66;
+            --vz-primary-rgb: 200, 157, 102;
+            --sidebar-bg: #ffffff;
+            --sidebar-hover: rgba(200,157,102,0.12);
+            --scroll-thumb: #C89D66;
+            --scroll-track: #f1e9df;
+        }
+
+        /*------------------------------------
+            GLOBAL SCROLLBAR DESIGN
+        -------------------------------------*/
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+        }
+
+        *::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: var(--scroll-track);
+            border-radius: 10px;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: var(--scroll-thumb);
+            border-radius: 10px;
+        }
+
+        *::-webkit-scrollbar-thumb:hover {
+            background: #b68d59;
+        }
+
+        /*------------------------------------
+            SIDEBAR STYLE UPDATE
+        -------------------------------------*/
+        .app-menu {
+            background: var(--sidebar-bg) !important;
+            border-right: 1px solid #eee;
+        }
+
+        #scrollbar {
+            padding-right: 5px;
+        }
+
+        .menu-title {
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            color: #444 !important;
+            margin: 20px 0 8px 18px;
+        }
+
+        .nav-item .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: 0.3s ease;
+            color: #222 !important;
+        }
+
+        .nav-item .menu-link i {
+            font-size: 17px;
+            color: #555 !important;
+        }
+
+        .nav-item .menu-link:hover {
+            background: var(--sidebar-hover);
+            color: var(--vz-primary) !important;
+        }
+
+        .nav-item .menu-link:hover i {
+            color: var(--vz-primary) !important;
+        }
+
+        /* Active item with left highlight bar */
+        .nav-item .menu-link.active {
+            background: var(--sidebar-hover);
+            color: var(--vz-primary) !important;
+            position: relative;
+        }
+
+        .nav-item .menu-link.active::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--vz-primary);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .sidebar-user {
+            background: #f5f5f5 !important;
+            border: 1px solid #ddd !important;
+        }
+
+        /*------------------------------------
+            PRIMARY COMPONENT OVERRIDES
+        -------------------------------------*/
+        .btn-primary,
+        .bg-primary {
+            background-color: #C89D66 !important;
+            border-color: #C89D66 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #b68d59 !important;
+        }
+
+        .text-primary {
+            color: #C89D66 !important;
+        }
+
+        .form-control:focus {
+            border-color: #C89D66;
+            box-shadow: 0 0 0 0.2rem rgba(200, 157, 102, 0.25);
+        }
+
+        svg path {
+            fill: #000 !important;
+            stroke: #000 !important;
+        }
+
+        .admin-header {
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="layout-wrapper">
+
+    <!-- TOPBAR -->
+    <header id="page-topbar">
+        <div class="layout-width">
+            <div class="navbar-header d-flex justify-content-between">
+
+                <div class="d-flex">
+                    <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger">
+                        <span class="hamburger-icon"><span></span><span></span><span></span></span>
+                    </button>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen">
+                        <i class="bx bx-fullscreen fs-22"></i>
+                    </button>
+
+                    <div class="dropdown ms-sm-3 header-item topbar-user">
+                        <button type="button" class="btn" data-bs-toggle="dropdown">
+                            <span class="d-flex align-items-center">
+                                <img class="rounded-circle header-profile-user"
+                                     src="{% static 'assets/images/logo/avatar-1.jpg' %}">
+                                <span class="text-start ms-xl-2 d-none d-xl-inline-block fw-medium">ADMIN</span>
+                            </span>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="{% url 'admin_logout' %}">
+                                <i class="mdi mdi-logout text-muted fs-16 me-1"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <div class="app-menu navbar-menu">
+
+        <div class="navbar-brand-box">
+            <a href="{% url 'admin_home' %}" class="logo logo-dark">
+                <span class="logo-sm"><img src="{% static 'assets/images/logo/favicon.png' %}" height="22"></span>
+                <span class="logo-lg"><img src="{% static 'assets1/images/logo-dark.png' %}" height="17"></span>
+            </a>
+
+            <a href="{% url 'admin_home' %}" class="logo logo-light">
+                <span class="logo-sm"><img src="{% static 'assets/images/logo/011_logo.png' %}" height="40"></span>
+                <span class="logo-lg"><img src="{% static 'assets/images/logo/011_logo.png' %}" height="100"></span>
+            </a>
+        </div>
+
+        <!-- Sidebar User -->
+        <div class="dropdown sidebar-user m-2 rounded p-2">
+            <button type="button" class="btn" data-bs-toggle="dropdown">
+                <span class="d-flex align-items-center gap-2">
+                    <img class="rounded header-profile-user"
+                         src="{% static 'assets1/images/users/avatar-1.jpg' %}">
+                    <span>
+                        <span class="fw-medium">Anna Adame</span><br>
+                        <span class="fs-14"><i class="ri-circle-fill fs-10 text-success"></i> Online</span>
+                    </span>
+                </span>
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="{% url 'admin_logout' %}">
+                    <i class="mdi mdi-logout text-muted fs-16 me-1"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <div id="scrollbar" style="height: calc(100vh - 200px); overflow-y: auto;">
+            <div class="container-fluid">
+                <ul class="navbar-nav" id="navbar-nav">
+
+                    <!-- USER -->
+                    <li class="menu-title"><span>User</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'admin_user_profile' %}">
+                            <i class="ri-user-3-line"></i> <span>View User</span>
+                        </a>
+                    </li>
+
+                    <!-- ADVOCATES -->
+                    <li class="menu-title"><span>Advocate</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'pending_advocates' %}">
+                            <i class="ri-time-line"></i> <span>Pending Advocates</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'verified_advocates' %}">
+                            <i class="ri-user-follow-line"></i> <span>Approved Advocates</span>
+                        </a>
+                    </li>
+
+                    <!-- LAWS -->
+                    <li class="menu-title"><span>Laws</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'addlaw' %}">
+                            <i class="ri-add-box-line"></i> <span>Add Law</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'admin_viewlaw' %}">
+                            <i class="ri-book-2-line"></i> <span>View Law</span>
+                        </a>
+                    </li>
+
+                    <!-- TEMPLATES -->
+                    <li class="menu-title"><span>Templates</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'addtemplate' %}">
+                            <i class="ri-file-add-line"></i> <span>Add Template</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'admin_template_list' %}">
+                            <i class="ri-file-list-line"></i> <span>View Template</span>
+                        </a>
+                    </li>
+
+                    <!-- LEGAL OFFICES -->
+                    <li class="menu-title"><span>Legal Offices</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'addtemplate' %}">
+                            <i class="ri-home-4-line"></i> <span>Add Offices</span>
+                        </a>
+                    </li>
+
+                    <!-- CHALLAN -->
+                    <li class="menu-title"><span>Challan</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{% url 'admin_challan_view' %}">
+                            <i class="ri-exchange-dollar-line"></i> <span>Transactions</span>
+                        </a>
+                    </li>
+
+                    <!-- Awareness -->
+                    <li class="menu-title"><span>Awareness Content</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#">
+                            <i class="ri-play-circle-line"></i> <span>Add Reel</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-background"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-header">
+                    <h2>Welcome, {{ admin_username }}!</h2>
+                    <p>Your Admin ID: {{ admin_id }}</p>
+                </div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © LAWLY.
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Back to Top Button -->
+<button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+    <i class="ri-arrow-up-line"></i>
+</button>
+
+<!-- JS -->
+<script src="{% static 'assets1/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets1/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'assets1/libs/node-waves/waves.min.js' %}"></script>
+<script src="{% static 'assets1/libs/feather-icons/feather.min.js' %}"></script>
+<script src="{% static 'assets1/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+<script src="{% static 'assets1/js/plugins.js' %}"></script>
+<script src="{% static 'assets1/libs/prismjs/prism.js' %}"></script>
+<script src="{% static 'assets1/js/app.js' %}"></script>
+
+</body>
+</html>

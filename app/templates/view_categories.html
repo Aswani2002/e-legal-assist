@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- :: Required Meta Tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout. Decision specially designed for Attorneys, Lawyers, Law Firm, Law Advisers, Legal Officers, Legal Advisers, Legal offices, Barristers at Law, Counsels, Solicitors, Advocates and other legal and law related services. Decision comes with most advanced and latest web technologies, enjoyable UX and the most beautiful design trends. Our template provides a platform to simply edit elements, choose styles and play around with the look and feel of your site!!" />
+    <meta name="keywords" content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor" />
+
+    <!-- :: Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <!-- :: Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+    <!-- :: Title -->
+    <title>Decision - Lawyer &amp; Attorney HTML Template</title>
+
+    <!-- :: Google Fonts -->
+    <link rel="stylesheet" href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" />
+
+    <!-- :: Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+    <!-- :: Flaticon -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}" />
+
+    <!-- :: OWL Carousel -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+
+    <!-- :: Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+    <!-- :: Lity -->
+    <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}" />
+
+    <!-- :: Animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+
+    <!-- :: Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+    <!-- :: Style Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <!-- [if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif] -->
+
+    <style>
+      .row {
+        margin-top: 75px;
+        margin-bottom: 75px;
+      }
+      /* Hide Google Translate branding */
+      .goog-logo-link {
+        display: none !important;
+      }
+      .goog-te-gadget {
+        color: transparent !important;
+      }
+      .goog-te-gadget .goog-te-combo {
+        color: #333 !important;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #c89d66;
+        color: #fff;
+        padding: 10px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 25px;
+        transition: 0.25s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      }
+
+      .back-btn:hover {
+        background: #1b1f2f;
+        transform: translateY(-2px);
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- :: Loading -->
+    <div class="loading">
+      <div class="loading-box">
+        <div class="sk-fading-circle">
+          <div class="sk-circle1 sk-circle"></div>
+          <div class="sk-circle2 sk-circle"></div>
+          <div class="sk-circle3 sk-circle"></div>
+          <div class="sk-circle4 sk-circle"></div>
+          <div class="sk-circle5 sk-circle"></div>
+          <div class="sk-circle6 sk-circle"></div>
+          <div class="sk-circle7 sk-circle"></div>
+          <div class="sk-circle8 sk-circle"></div>
+          <div class="sk-circle9 sk-circle"></div>
+          <div class="sk-circle10 sk-circle"></div>
+          <div class="sk-circle11 sk-circle"></div>
+          <div class="sk-circle12 sk-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- :: Navs -->
+    <header class="navs">
+      <!-- :: Navbar -->
+      <nav class="nav-bar nav-bar-2">
+        <div class="container">
+          <div class="box-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <a href="index.html" class="logo-nav">
+                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+              </a>
+              <a href="#open-nav-bar-menu" class="open-nav-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="nav-bar-link" id="open-nav-bar-menu">
+              <ul class="level-1">
+                <li>
+                  <a href="{% url 'home' %}" class="active">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'view_categories' %}">Laws</a>
+                </li>
+
+                <li>
+                  <a href="{% url 'advocates' %}">Advocates</a>
+                </li>
+                <li>
+                  <a href="{% url 'challan_form' %}">Challan</a>
+                </li>
+                <li>
+                  <a href="{% url 'legal_office_list' %}">Legal Offices</a>
+
+                </li>
+              </ul>
+            </div>
+            <ul>
+              <div id="google_translate_element"></div>
+
+              <li>
+                {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    
+
+    <!-- :: Practice Area -->
+    <section class="practice-area practice-area-2 py-100-70">
+      <div class="overlay"></div>
+      <div class="container">
+        <a href="{% url 'home' %}" class="back-btn">←</a>
+        <div class="row">
+          {% for item in category_list %}
+            <div class="col-md-12 col-lg-4">
+              <div class="practice-area-item">
+                <i class="{{ item.icon }}"></i>
+                <div class="content">
+                  <h4><a href="{% url 'view_laws_by_category' item.name %}">{{ item.name }}</a></h4>
+
+                  {% comment %}
+                  <p>{{ item.description }}</p>
+                  {% endcomment %}
+
+                  {% comment %} <a href="{% url 'view_laws_by_category' item.name %}">Read More</a> {% endcomment %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- :: Button Dark Mode -->
+    <div class="dark-mode-decision">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- :: Scroll UP -->
+    {% comment %} <div class="scroll-up">
+      <a href="#page" class="move-section"><i class="fas fa-long-arrow-alt-up"></i></a>
+    </div> {% endcomment %}
+
+    <!-- :: jQuery JS -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+    <!-- :: Popper JS -->
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+    <!-- :: BootStrap JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- :: OWL Carousel -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- :: Nice Select -->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+    <!-- :: Waypoints -->
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+    <!-- :: CounterUp -->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+    <!-- :: Lity -->
+    <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+    <!-- :: Main JS -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- :: Ajax Script -->
+    <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </body>
+</html>

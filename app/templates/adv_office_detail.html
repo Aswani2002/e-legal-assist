@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- :: Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Legal Office Details</title>
+
+    <!-- :: Bootstrap -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <!-- :: Fonts -->
+    <link rel="stylesheet" href="../../css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;600&display=swap" />
+
+    <!-- :: Icons -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+    <!-- :: Theme -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #e7e3dc, #c89d66);
+        margin: 0;
+        padding: 0;
+      }
+
+      .law-container {
+        max-width: 1100px;
+        margin: 60px auto;
+        margin-top: calc(40vh - 220px);
+        padding: 40px 45px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .title {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #222;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #c89d66;
+        color: #fff;
+        padding: 10px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 25px;
+        transition: 0.25s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      }
+
+      .back-btn:hover {
+        background: #1b1f2f;
+        transform: translateY(-2px);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      th {
+        background: #262b3e;
+        color: #fff;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 250px;
+      }
+
+      td {
+        padding: 14px;
+        font-size: 15px;
+        color: #333;
+        background: #fafafa;
+        border-bottom: 1px solid #eee;
+        line-height: 1.6;
+      }
+
+      tr:hover td {
+        background: #f1ece3;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- NAVIGATION SAME AS LIST PAGE -->
+    <header class="navs">
+      <!-- :: Navbar -->
+      <nav class="nav-bar nav-bar-2">
+        <div class="container">
+          <div class="box-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <a href="index.html" class="logo-nav">
+                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+              </a>
+              <a href="#open-nav-bar-menu" class="open-nav-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="nav-bar-link" id="open-nav-bar-menu">
+              <ul class="level-1">
+                <li>
+                  <a href="{% url 'advocate_home' %}" class="active">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'advocate_profile_view' %}">Profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'adv_view_categories' %}">Laws</a>
+                </li>
+
+                {% comment %} <li>
+                  <a href="{% url 'advocates' %}">Advocates</a>
+                </li>
+                <li>
+                  <a href="{% url 'challan_form' %}">Challan</a>
+                </li> {% endcomment %}
+                <li>
+                  <a href="{% url 'adv_legal_office_list' %}">Legal Offices</a>
+
+                </li>
+              </ul>
+            </div>
+            <ul>
+              <div id="google_translate_element"></div>
+
+              <li>
+                <a class="btn-1" href="{% url 'login' %}">Sign In</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN DETAIL SECTION -->
+    <div class="law-container">
+
+      <h3 class="title">Legal Office Details</h3>
+
+      <a href="{% url 'adv_legal_office_list' %}" class="back-btn">←</a>
+
+      <table>
+        <tr>
+          <th>Office Name</th>
+          <td>{{ office.office_name }}</td>
+        </tr>
+
+        <tr>
+          <th>Address</th>
+          <td>{{ office.address }}</td>
+        </tr>
+
+        <tr>
+          <th>Location</th>
+          <td>{{ office.location }}</td>
+        </tr>
+
+        <tr>
+          <th>Contact Number</th>
+          <td>{{ office.contact_no }}</td>
+        </tr>
+
+        <tr>
+          <th>Email</th>
+          <td>{{ office.email }}</td>
+        </tr>
+
+        <tr>
+          <th>Offences Handled</th>
+          <td>{{ office.offences_handled }}</td>
+        </tr>
+
+        <tr>
+          <th>Working Hours</th>
+          <td>{{ office.working_hours }}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!-- :: SCRIPTS -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+</html>

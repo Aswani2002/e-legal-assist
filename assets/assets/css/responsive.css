@@ -1,0 +1,297 @@
+/*
+::
+:: Theme Name: Decision - Lawyer & Attorney HTML Template
+:: Email: Nourramadan144@gmail.com
+:: Author URI: https://themeforest.net/user/ar-coder
+:: Author: ar-coder
+:: Version: 1.0
+:: 
+*/
+
+/* :: Medium devices */
+@media (max-width: 991px){
+    
+    /* :: Navbar Top */
+    .nav-top .nav-top-box ul li .btn-1{
+        display: none;
+    }
+    
+    /* :: Navbar */
+    .nav-bar .nav-bar-link{
+        display: none;
+    }
+    .nav-bar .box-content{
+        display: block !important;
+    }
+    .nav-bar .logo{
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+    .nav-bar .logo .logo-nav{
+        padding: 16px 0;
+    }
+    .nav-bar .logo .open-nav-bar span{
+        width: 30px;
+        height: 3px;
+        border-radius: 3px;
+        background-color: #FFF;
+        display: block;
+    }
+    .nav-bar.active .logo .open-nav-bar span{
+        background-color: #262B3E;
+    }
+    .nav-bar .logo .open-nav-bar:hover span,
+    .nav-bar .logo .open-nav-bar.active span{
+        background-color: #C9B38C;
+    }
+    .nav-bar .logo .open-nav-bar span:nth-of-type(2){
+        margin: 5px 0;
+    }
+    .nav-bar .nav-bar-link.active{
+        display: block;
+        border-top: 1px solid rgb(34, 34, 34, 0.1);
+        max-height: 300px;
+        overflow: hidden;
+        overflow-y: scroll;
+        -webkit-box-shadow: 0 3px 4px rgba(0,0,0,.07);
+                box-shadow: 0 3px 4px rgba(0,0,0,.07);
+        background-color: #262B3E;
+    }
+    .nav-bar .nav-bar-link > ul > li{
+        display: block;
+    }
+    .nav-bar.active .nav-bar-link ul li a {
+        color: #F1F1F1;
+    }
+    .nav-bar .nav-bar-link ul li a{
+        color: #F1F1F1;
+        margin: 0;
+        padding: 10px;
+    }
+    .nav-bar .nav-bar-link ul li a:before{
+        display: none
+    }
+    .nav-bar .nav-bar-link ul li a.color-active{
+        color: #C9B38C;
+    }
+    .nav-bar .nav-bar-link > ul ul li a{
+        font-weight: 500;
+        width: 100%;
+    }
+    .nav-bar .nav-bar-link ul li.has-menu > a:after{
+        content: '\f107';
+        font-family: 'Font Awesome 5 Free';
+        position: absolute;
+        right: 10px;
+        font-size: 12px;
+        width: 25px;
+        height: 25px;
+        background-color: #C9B38C;
+        color: #FFF;
+        text-align: center;
+        border-radius: 3px;
+        font-weight: 900;
+        -webkit-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .nav-bar .nav-bar-link ul li.has-menu > a.active:after{
+        -webkit-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+                transform: rotate(-180deg);
+    }
+    .nav-bar .nav-bar-link > ul ul{
+        -webkit-transform: unset;
+            -ms-transform: unset;
+                transform: unset;
+        opacity: unset;
+        visibility: unset;
+        position: unset;
+        padding: 0;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        display: none;
+    }
+    .nav-bar .nav-bar-link > ul ul.active{
+        display: block;
+    }
+    .nav-bar .info-nav{
+        display: none;
+    }
+    .nav-bar .icon{
+        display: none;
+    }
+    
+    /* :: Header */
+    .header-2 .box-hero{
+        display: block !important;
+    }
+    .header-2 .box-hero .banner,
+    .header-2 .box-hero .services-header{
+        width: 100%;
+    }
+    .header-2 .box-hero .services-header{
+        margin-top: 50px;
+        text-align: left!important;
+    }
+    .header-2 .box-hero .services-header .line{
+        display: inline-block;
+    }
+    
+    /* :: Features */
+    .features .features-box .features-item{
+        width: 100%;
+    }
+    
+    /* :: About Us */
+    .about .text-box{
+        margin-top: 50px;
+    }
+    .about-2 .text-box,
+    .about-3 .text-box{
+        margin: 0 0 50px 0;
+    }
+    
+    /* :: Skills */
+    .skills{
+        margin-top: 50px;
+    }
+    
+    /* :: Practice Area */
+    .practice-area{
+        background-position: right;
+    }
+    .practice-area-2{
+        background-position: unset;
+    }
+    
+    /* :: Quote */
+    .quote-box{
+        margin-top: 50px;
+    }
+	.quote .box .img-box img{
+		height: 400px;
+		width: 100%;
+	}
+    
+    /* :: Quote */
+    .subscribe {
+        margin-top: 50px;
+    }
+    
+    /* :: Provide */
+    .provide .text-box{
+        padding: 80px 40px;
+    }
+    
+    /* :: Pagination */
+    .pagination-area.one{
+        margin-bottom: 30px;
+    }
+    
+    /* :: Shop */
+    .shop.area .text-box-details .title-product{
+        margin-top: 50px;
+    }
+    
+}
+
+/* :: Small devices */
+@media (max-width: 768px){
+    
+    /* :: Navbar Top */
+    .nav-top{
+        display: none;
+    }
+    
+    /* :: Header */
+    .header .banner .handline{
+        font-size: 58px;
+    }
+    .header-2 .box-hero .services-header{
+        display: none !important;
+    }
+    
+    /* :: Provide */
+    .provide .img-box{
+        height: 600px;
+    }
+    .provide .text-box{
+        padding: 80px;
+    }
+    
+    /* :: Presentation */
+    .presentation-box{
+        top: auto;
+        bottom: calc(600px - 30px);
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+    }
+    
+}
+
+/* :: Extra small devices */
+@media (max-width: 575px){
+    
+    /* :: Header */
+    .header .banner .handline {
+        font-size: 48px;
+    }
+    
+    /* :: Menu Box */
+    .menu-box .inner-menu{
+        width: 100%;
+    }
+    
+    /* :: About Us */
+    .core-about li{
+        float: none;
+        width: 100%;
+    }
+    .about .text-box .p-about{
+        margin-bottom: 16px;
+    }
+    .about .text-box .sign-about{
+        margin-top: 20px;
+    }
+    
+    /* :: Provide */
+    .provide .text-box{
+        padding: 80px 40px;
+    }
+    
+    .page-404-area h2{
+        font-size: 150px;
+    }
+    
+}
+
+/* :: Dark Mode */
+@media (max-width: 991px){
+    .active-dark-mode-decision .nav-bar.active .open-nav-bar span{
+        background-color: #FFF;
+    }
+	.active-dark-mode-decision .nav-bar .logo .open-nav-bar:hover span,
+	.active-dark-mode-decision .nav-bar .logo .open-nav-bar.active span{
+		background-color: #C9B38C;
+	}
+	.active-dark-mode-decision .nav-bar .nav-bar-link.active{
+		border-top: 1px solid rgb(255 255 255 / 10%);
+	}
+}
+@media (max-width: 768px){
+    
+}
+@media (max-width: 575px){
+    
+}

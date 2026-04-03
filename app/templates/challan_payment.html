@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Challan Payment</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6fa;
+            padding: 40px;
+            text-align: center;
+        }
+        .box {
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .info {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .amount {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0f6efd;
+            margin-bottom: 20px;
+        }
+        .loading {
+            margin-top: 20px;
+            font-size: 15px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Challan Payment</h2>
+
+    <p class="info">Challan Number: <strong>{{ challan_no }}</strong></p>
+    <p class="amount">Amount: ₹{{ display_amount }}</p>
+
+    <p class="loading">Redirecting to secure Razorpay payment...</p>
+</div>
+
+<!-- Razorpay Checkout Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ razorpay_merchant_key }}",
+    "amount": "{{ razorpay_amount }}",
+    "currency": "{{ currency }}",
+    "name": "Challan Payment",
+    "description": "Online Challan Payment",
+    "order_id": "{{ razorpay_order_id }}",
+
+    "handler": function (response){
+        // Send response to Django
+        document.getElementById("razorpay_payment_id").value = response.razorpay_payment_id;
+        document.getElementById("razorpay_order_id").value = response.razorpay_order_id;
+        document.getElementById("razorpay_signature").value = response.razorpay_signature;
+        document.getElementById("payment-form").submit();
+    },
+
+    "theme": {
+        "color": "#0f6efd"
+    }
+};
+
+var rzp = new Razorpay(options);
+
+// Auto-open Razorpay UI
+rzp.open();
+</script>
+
+<!-- Hidden form -->
+<form action="{{ callback_url }}" method="POST" id="payment-form">
+    {% csrf_token %}
+    <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+    <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
+    <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+</form>
+
+</body>
+</html>

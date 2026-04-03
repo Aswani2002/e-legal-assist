@@ -1,0 +1,464 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- :: Required Meta Tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout. Decision specially designed for Attorneys, Lawyers, Law Firm, Law Advisers, Legal Officers, Legal Advisers, Legal offices, Barristers at Law, Counsels, Solicitors, Advocates and other legal and law related services. Decision comes with most advanced and latest web technologies, enjoyable UX and the most beautiful design trends. Our template provides a platform to simply edit elements, choose styles and play around with the look and feel of your site!!" />
+    <meta name="keywords" content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor" />
+
+    <!-- :: Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <!-- :: Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+    <!-- :: Title -->
+    <title>Decision - Lawyer &amp; Attorney HTML Template</title>
+
+    <!-- :: Google Fonts -->
+    <link rel="stylesheet" href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" />
+
+    <!-- :: Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+    <!-- :: Flaticon -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}" />
+
+    <!-- :: OWL Carousel -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+
+    <!-- :: Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+    <!-- :: Lity -->
+    <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}" />
+
+    <!-- :: Animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+
+    <!-- :: Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+    <!-- :: Style Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <!-- [if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif] -->
+
+    <meta name="google" content="notranslate" />
+
+<!-- Load FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+  body {
+        
+        background: linear-gradient(135deg, #313851, #313851);
+      }
+
+
+
+/* ===============================
+   FORCE SINGLE ROW – NO GAPS
+================================ */
+.features.features-2 .features-box {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===============================
+   CARD BASE
+================================ */
+.features.features-2 .features-box > .features-item {
+    flex: 1;
+    margin: 0;
+    padding: 35px 25px;
+    min-height: 100px; 
+    min-width: ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: none; /* remove theme bg images */
+}
+
+/* ===============================
+   ICON
+================================ */
+.features.features-2 .features-item i {
+    font-size: 36px;
+    margin-right: 15px;
+    color: #fff;
+}
+
+/* ===============================
+   TEXT
+================================ */
+.features.features-2 .features-item h4,
+.features.features-2 .features-item a {
+    color: #fff;
+    margin: 0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ===============================
+   ALTERNATING COLORS (FORCED)
+================================ */
+.features.features-2 .features-box > .features-item:nth-of-type(odd) {
+    background-color: #313851 !important; /* Blue */
+}
+
+.features.features-2 .features-box > .features-item:nth-of-type(even) {
+    background-color: #C89D66 !important; /* Gold */
+}
+
+/* ===============================
+   OPTIONAL HOVER (SUBTLE)
+================================ */
+.features.features-2 .features-item:hover {
+    filter: brightness(1.06);
+    transition: 0.3s ease;
+}
+</style>
+
+
+
+
+
+
+
+
+
+  </head>
+  <body>
+    <!-- :: Loading -->
+    <div class="loading">
+      <div class="loading-box">
+        <div class="sk-fading-circle">
+          <div class="sk-circle1 sk-circle"></div>
+          <div class="sk-circle2 sk-circle"></div>
+          <div class="sk-circle3 sk-circle"></div>
+          <div class="sk-circle4 sk-circle"></div>
+          <div class="sk-circle5 sk-circle"></div>
+          <div class="sk-circle6 sk-circle"></div>
+          <div class="sk-circle7 sk-circle"></div>
+          <div class="sk-circle8 sk-circle"></div>
+          <div class="sk-circle9 sk-circle"></div>
+          <div class="sk-circle10 sk-circle"></div>
+          <div class="sk-circle11 sk-circle"></div>
+          <div class="sk-circle12 sk-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- :: Navs -->
+    <header class="navs">
+      <!-- :: Navbar -->
+      <nav class="nav-bar nav-bar-2">
+        <div class="container">
+          <div class="box-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <a href="index.html" class="logo-nav">
+                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+              </a>
+              <a href="#open-nav-bar-menu" class="open-nav-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="nav-bar-link" id="open-nav-bar-menu">
+              <ul class="level-1">
+                <li>
+                  <a href="{% url 'advocate_home' %}" class="active">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'advocate_profile_view' %}">Profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'adv_view_categories' %}">Laws</a>
+                </li>
+
+                {% comment %} <li>
+                  <a href="{% url 'advocates' %}">Advocates</a>
+                </li>{% endcomment %}
+                <li>
+                  <a href="{% url 'advocate_appointments' %}">Appointments</a>
+                </li> 
+                {% comment %} <li>
+                  <a href="{% url 'adv_legal_office_list' %}">Legal Offices</a>
+
+                </li> {% endcomment %}
+              </ul>
+            </div>
+            <ul>
+              <div id="google_translate_element"></div>
+
+              <li>
+                {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- :: Search Box -->
+    <div class="search-box">
+      <form>
+        <input type="search" placeholder="Search Here.." />
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <i class="fas fa-times close-search"></i>
+    </div>
+
+    <!-- :: Menu Box -->
+    <div class="menu-box">
+      <div class="inner-menu">
+        <div class="website-info">
+          <a href="#" class="logo"><img class="img-fluid" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" /></a>
+          <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+        </div>
+
+        <div class="follow-us">
+          <h4>Follow Us</h4>
+          <ul class="icon-follow">
+            <li>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="exit-menu-box">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- :: Header -->
+    <header class="header header-2" id="page">
+      <div class="header-owl header-owl-2 owl-carousel owl-theme">
+        <div class="sec-hero display-table" style="background-image: url({% static 'assets/images/header/04_header.jpg' %})">
+          <div class="table-cell">
+            <div class="overlay"></div>
+            <div class="container">
+              <div class="box-hero d-flex align-items-center justify-content-between">
+                <div class="banner">
+                  <div class="headline-top">Hello, Advocate</div>
+                  <h1 class="handline">Your Legal Work, Simplified</h1>
+                  <p class="about-website">Easily manage cases, clients, and legal documents while staying connected
+  with those who need your expertise.
+</p>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+
+
+
+
+    <!-- :: Features -->
+   <section class="features features-2">
+  <div class="container">
+    <div class="features-box">
+
+      <a href="{% url 'adv_view_categories' %}" class="features-item">
+        <i class="fa-solid fa-gavel"></i>
+        <div class="item-text">
+          <h4>Laws</h4>
+        </div>
+      </a>
+
+      {% comment %} <a href="{% url 'advocates' %}" class="features-item">
+        <i class="fa-solid fa-user-tie"></i>
+        <div class="item-text">
+          <h4>Advocates</h4>
+        </div>
+      </a> {% endcomment %}
+
+      <a href="{% url 'adv_template_list' %}" class="features-item">
+        <i class="fa-solid fa-file-lines"></i>
+        <div class="item-text">
+          <h4>Documents</h4>
+        </div>
+      </a>
+
+      {% comment %} <a href="{% url 'challan_form' %}" class="features-item">
+        <i class="fa-solid fa-receipt"></i>
+        <div class="item-text">
+          <h4>Challan</h4>
+        </div>
+      </a> {% endcomment %}
+
+      <a href="{% url 'advocate_appointments' %}" class="features-item">
+        <i class="fa-solid fa-building-columns"></i>
+        <div class="item-text">
+          <h4>Appointments</h4>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- :: About -->
+    
+
+    <!-- :: Practice Area -->
+    {% comment %} <section class="practice-area practice-area-2 py-100-70">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="box-content">
+            <div class="section-title">
+                <h4>Our Practice Area</h4>
+                <h2>We Have Experience In Various Fields Of Law</h2>
+            </div>
+            <div class="practice-owl practice-owl-2 owl-carousel owl-theme">
+                
+            </div>
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+            <div class="image-box">
+            <img class="img-fluid" src="{% static 'assets/images/practice-area/02_practice-area.jpg' %}" alt="02 Practice Area" />
+            </div>
+        </div>
+
+      
+
+    </div>
+  </div>
+</section> {% endcomment %}
+
+
+    <!-- :: Card Example -->
+
+    <!-- :: Blog Section -->
+    
+
+
+
+    <!-- :: Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="logo">
+              <img class="img-fluid" src="{% static 'assets/images/logo/011_logo.png' %}" alt="Footer Logo" />
+              {% comment %} <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+              <ul>
+                <li>
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-dribbble"></i></a>
+                </li>
+              </ul> {% endcomment %}
+              <p>@ 2025 Lawly.</p>
+            </div>
+          </div>
+
+          
+
+          
+        </div>
+      </div>
+
+      
+    </footer>
+
+    <!-- :: Button Dark Mode -->
+    <div class="dark-mode-decision">
+      <i class="fas fa-moon"></i>
+    </div>
+    
+
+
+
+    <!-- :: Scroll UP -->
+    <div class="scroll-up">
+      <a href="#page" class="move-section"><i class="fas fa-long-arrow-alt-up"></i></a>
+    </div>
+
+    <!-- :: jQuery JS -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+    <!-- :: Popper JS -->
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+    <!-- :: BootStrap JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- :: OWL Carousel -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- :: Nice Select -->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+    <!-- :: Waypoints -->
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+    <!-- :: CounterUp -->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+    <!-- :: Lity -->
+    <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+    <!-- :: Main JS -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- :: Ajax Script -->
+    <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+  
+<script>
+function loadReel(instaLink) {
+    fetch(`/extract-reel/?url=${encodeURIComponent(instaLink)}`)
+        .then(r => r.json())
+        .then(data => {
+            if (data.mp4) {
+                document.getElementById("reelPlayer").src = data.mp4;
+            } else {
+                alert("Failed: " + data.error);
+            }
+        });
+}
+</script>
+
+</body>
+</html>

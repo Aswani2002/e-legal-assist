@@ -1,0 +1,455 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- :: Required Meta Tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- :: Title -->
+  <title>{{ adv.advocate_name }} - Advocate Profile</title>
+
+  <!-- :: Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+  <!-- :: Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+  <!-- :: Google Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" />
+
+  <!-- :: Fontawesome -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}" />
+
+  <!-- :: OWL Carousel -->
+  <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+
+  <!-- :: Nice Select CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+  <!-- :: Lity -->
+  <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}" />
+
+  <!-- :: Style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+</head>
+
+<body>
+  <!-- :: Loading -->
+  <div class="loading">
+    <div class="loading-box">
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Navs -->
+  <header class="navs">
+    <!-- :: Navbar -->
+    <nav class="nav-bar nav-bar-2">
+      <div class="container">
+        <div class="box-content d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <a href="index.html" class="logo-nav">
+              <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+              <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+            </a>
+            <a href="#open-nav-bar-menu" class="open-nav-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+          <div class="nav-bar-link" id="open-nav-bar-menu">
+            <ul class="level-1">
+              <li>
+                <a href="{% url 'home' %}" class="active">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'view_categories' %}">Laws</a>
+              </li>
+
+              <li>
+                <a href="{% url 'advocates' %}">Advocates</a>
+              </li>
+              <li>
+                <a href="{% url 'challan_form' %}">Challan</a>
+              </li>
+              <li>
+                <a href="{% url 'legal_office_list' %}">Legal Offices</a>
+
+              </li>
+            </ul>
+          </div>
+          <ul>
+            <div id="google_translate_element"></div>
+
+            <li>
+              {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- :: Breadcrumb Header -->
+  <section class="breadcrumb-header" id="page"
+    style="background-image: url({% static 'assets/images/header/07_header.jpg' %})">
+    <div class="overlay">
+
+    </div>
+    <div class="container">
+      <a href="{% url 'advocates' %}" class="back-btn">←</a>
+
+      {% comment %} <div class="row">
+        <div class="col-md-6">
+          <div class="banner">
+            <h1>Advisors 1</h1>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><i class="fas fa-angle-right"></i></li>
+              <li>Advisors 1</li>
+            </ul>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </section>
+
+  <!-- :: Single Advisors -->
+  <section class="single-advisors py-100">
+    <div class="container">
+
+
+      <div class="row">
+        <!-- LEFT COLUMN -->
+        <div class="col-md-4">
+          <div class="advisors-box"
+            style="background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+
+            <!-- IMAGE -->
+            <div class="img-box" style="width: 100%; height: 75%; overflow: hidden; border-radius: 12px;">
+              <style>
+                .adv-img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.6s ease;
+                  border-radius: 12px;
+                }
+
+                .adv-img:hover {
+                  transform: scale(1.08);
+                }
+
+                .back-btn {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  background: #c89d66;
+                  color: #fff;
+                  padding: 10px 26px;
+                  border-radius: 30px;
+                  text-decoration: none;
+                  font-weight: 600;
+                  font-size: 15px;
+                  margin-bottom: 25px;
+                  transition: 0.25s ease;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+                }
+
+                .back-btn:hover {
+                  background: #1b1f2f;
+                  transform: translateY(-2px);
+                }
+              </style>
+
+              {% if adv.image %}
+              <img class="adv-img" src="{{ adv.image.url }}" alt="{{ adv.advocate_name }}" />
+              {% else %}
+              <img class="adv-img" src="{% static 'assets/images/default-profile.png' %}" alt="No Image" />
+              {% endif %}
+            </div>
+
+            <!-- NAME -->
+            <div class="text-box text-center" style="margin-top: 20px;">
+              <h5 style="font-size: 22px; font-weight: 600;">{{ adv.advocate_name }}</h5>
+              <span style="color:#C89D66; font-size:16px;">{{ adv.specialization }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-md-8">
+          <div class="advisor-details-content"
+            style="padding: 25px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+
+            <!-- ABOUT -->
+            <h3 style="font-size: 28px; font-weight: 600;">About {{ adv.advocate_name }}</h3>
+            <p style="font-size: 16px; line-height: 1.8; margin-top: 10px;">
+              {{ adv.advocate_name }} specializes in
+              <strong style="color: #C89D66;">{{ adv.specialization }}</strong> with
+              <strong style="color: #C89D66;">{{ adv.experience_years }} years</strong> of experience.
+            </p>
+
+            <!-- PROFESSIONAL DETAILS -->
+            <div class="advisor-info mt-4">
+
+              <h4 style="font-size: 22px; font-weight: 600; margin-bottom: 20px;">Professional Details</h4>
+
+              <ul class="list-unstyled" style="font-size: 16px;">
+
+                <!-- VERIFICATION -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-user-shield" style="color:#C89D66; width:25px;"></i>
+                  <strong>Verification:</strong>
+                  {% if adv.is_verified %}
+                  <span style="color:#28a745;font-weight:600;">Verified ✓</span>
+                  {% else %}
+                  <span style="color:#dc3545;font-weight:600;">Not Verified ✗</span>
+                  {% endif %}
+                </li>
+
+                <!-- EMAIL (LOCKED UNTIL APPROVED) -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-envelope" style="color:#C89D66; width:25px;"></i>
+                  <strong>Email:</strong>
+                  {% if has_approved_appointment %}
+                  {{ adv.email }}
+                  {% else %}
+                  <span style="color:#999;">🔒 Available after appointment approval</span>
+                  {% endif %}
+                </li>
+
+                <!-- EXPERIENCE -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-briefcase" style="color:#C89D66; width:25px;"></i>
+                  <strong>Experience:</strong> {{ adv.experience_years }} Years
+                </li>
+
+                <!-- LOCATION (LOCKED UNTIL APPROVED) -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-map-marker-alt" style="color:#C89D66; width:25px;"></i>
+                  <strong>Location:</strong>
+                  {% if has_approved_appointment %}
+                  {{ adv.location }}
+                  {% else %}
+                  <span style="color:#999;">🔒 Available after appointment approval</span>
+                  {% endif %}
+                </li>
+
+                <!-- QUALIFICATION -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-graduation-cap" style="color:#C89D66; width:25px;"></i>
+                  <strong>Qualifications:</strong> {{ adv.qualification }}
+                </li>
+
+                <!-- STATE BAR COUNCIL -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-landmark" style="color:#C89D66; width:25px;"></i>
+                  <strong>State Bar Council:</strong> {{ adv.state_bar_council }}
+                </li>
+
+                <!-- ENROLLMENT NUMBER -->
+                <li style="margin-bottom: 12px;">
+                  <i class="fas fa-id-badge" style="color:#C89D66; width:25px;"></i>
+                  <strong>Enrollment Number:</strong> {{ adv.enrollment_number }}
+                </li>
+
+              </ul>
+              <!-- ======================================================== -->
+            </div>
+            <!-- APPOINTMENT BOOKING -->
+            {% if adv.availability_status %}
+            <div
+              style="margin-top:35px; padding:25px; background:#f9f6f1; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+
+              <h4 style="font-size:22px; font-weight:600; margin-bottom:15px;">
+                Book an Appointment
+              </h4>
+
+              <form method="POST" action="{% url 'book_appointment' adv.advocate_id %}">
+                {% csrf_token %}
+
+                <div style="margin-bottom:15px;">
+                  <label style="font-weight:500;">Select Appointment Date</label>
+                  <input type="date" name="appointment_date" required class="form-control" style="border-radius:8px;">
+                </div>
+
+                <button type="submit" style="padding:12px 30px;
+                   background:#C89D66;
+                   color:#fff;
+                   border:none;
+                   border-radius:8px;
+                   font-size:16px;
+                   font-weight:500;
+                   cursor:pointer;">
+                  Request Appointment
+                </button>
+              </form>
+
+            </div>
+            {% else %}
+            <div style="margin-top:30px; padding:20px; background:#fdecea; border-radius:10px;">
+              <strong style="color:#dc3545;">Advocate is currently not available for appointments.</strong>
+            </div>
+            {% endif %}
+
+
+            <!-- FEEDBACK FORM -->
+            <div class="feedback-box"
+              style="margin-top:40px;padding:20px;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.10);">
+              <h5 style="font-size:20px;font-weight:600;">Send Feedback to {{ adv.advocate_name }}</h5>
+
+              <p style="color:#555;font-size:15px;">Rate the advocate and share your experience.</p>
+
+              <form method="POST" action="{% url 'send_feedback' adv.advocate_id %}">
+                {% csrf_token %}
+
+                <!-- STAR RATING -->
+                <div class="star-rating" style="margin-bottom:15px; direction: rtl; display: inline-flex;">
+                  <input type="radio" id="5" name="rating" value="5"><label for="5">&#9733;</label>
+                  <input type="radio" id="4" name="rating" value="4"><label for="4">&#9733;</label>
+                  <input type="radio" id="3" name="rating" value="3"><label for="3">&#9733;</label>
+                  <input type="radio" id="2" name="rating" value="2"><label for="2">&#9733;</label>
+                  <input type="radio" id="1" name="rating" value="1"><label for="1">&#9733;</label>
+                </div>
+
+                <textarea name="message" required placeholder="Write feedback..."
+                  style="width:100%;height:100px;padding:10px;border-radius:8px;border:1px solid #ccc;"></textarea>
+
+                <button type="submit"
+                  style="padding:10px 25px;background:#C89D66;color:#fff;border-radius:8px;border:none;cursor:pointer;">
+                  Submit Feedback
+                </button>
+              </form>
+
+              <style>
+                .star-rating input {
+                  display: none;
+                }
+
+                .star-rating label {
+                  font-size: 30px;
+                  color: #ccc;
+                  cursor: pointer;
+                }
+
+                .star-rating label:hover,
+                .star-rating label:hover~label {
+                  color: #ffca08;
+                }
+
+                .star-rating input:checked~label {
+                  color: #ffca08;
+                }
+              </style>
+            </div>
+
+            <!-- REVIEWS LIST -->
+            <div class="reviews-box"
+              style="margin-top:40px;padding:25px;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.10);">
+              <h4 style="font-size:22px; font-weight:600; margin-bottom:20px;">Client Reviews ({{ feedbacks.count }})
+              </h4>
+
+              {% if feedbacks %}
+              <ul class="list-unstyled">
+                {% for feedback in feedbacks %}
+                <li style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:15px;">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <strong style="font-size:16px;">{{ feedback.user.fullname }}</strong>
+                    <span style="color:#888; font-size:13px;">{{ feedback.created_at|date:"M d, Y" }}</span>
+                  </div>
+
+                  <div class="star-rating-display" style="color:#ffca08; margin: 5px 0; font-size: 18px;">
+                    {% if feedback.rating >= 1 %}★{% else %}☆{% endif %}
+                    {% if feedback.rating >= 2 %}★{% else %}☆{% endif %}
+                    {% if feedback.rating >= 3 %}★{% else %}☆{% endif %}
+                    {% if feedback.rating >= 4 %}★{% else %}☆{% endif %}
+                    {% if feedback.rating >= 5 %}★{% else %}☆{% endif %}
+                  </div>
+
+                  <p style="color:#555; font-size:15px; margin-top:5px;">{{ feedback.message }}</p>
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <p style="color:#777; font-style:italic;">No reviews yet. Be the first to share your experience!</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- :: Footer -->
+  <footer class="footer">
+    <!-- original footer unchanged -->
+  </footer>
+
+
+  <!-- ID Card Popup Modal -->
+  <div class="modal fade" id="idCardModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Bar Council ID Card</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <img id="idCardImage" src="" style="width:100%; max-height:500px; object-fit:contain; border-radius:10px;">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'assets/js/lity.min.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <script>
+    function showIDCard(url) {
+      document.getElementById("idCardImage").src = url;
+      var modal = new bootstrap.Modal(document.getElementById('idCardModal'));
+      modal.show();
+    }
+  </script>
+
+
+</body>
+
+</html>

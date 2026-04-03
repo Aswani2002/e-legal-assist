@@ -1,0 +1,497 @@
+<!doctype html>
+{% load static %}
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADMIN | HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets1/images/favicon.ico' %}">
+
+    <!-- Layout config Js -->
+    <script src="{% static 'assets1/js/layout.js' %}"></script>
+
+    <!-- Bootstrap Css -->
+    <link href="{% static 'assets1/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Icons Css -->
+    <link href="{% static 'assets1/css/icons.min.css' %}" rel="stylesheet">
+
+    <!-- App Css -->
+    <link href="{% static 'assets1/css/app.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="{% static 'assets1/css/custom.min.css' %}" rel="stylesheet">
+
+    <!-- ===================== Custom Styles ===================== -->
+    <style>
+        :root {
+            --vz-primary: #C89D66;
+            --vz-primary-rgb: 200, 157, 102;
+        }
+
+        .btn-primary {
+            background-color: #C89D66;
+            border-color: #C89D66;
+        }
+
+        .btn-primary:hover {
+            background-color: #b68d59;
+            border-color: #b68d59;
+        }
+
+        .text-primary {
+            color: #C89D66 !important;
+        }
+
+        .bg-primary {
+            background-color: #C89D66 !important;
+        }
+
+        /* Sidebar Text & Icons Default Black */
+        .menu-link span,
+        .menu-title,
+        .menu-item .menu-link,
+        .menu-item a {
+            color: #000 !important;
+        }
+
+        svg path,
+        .ri,
+        .mdi,
+        .fa,
+        .bi {
+            color: #000 !important;
+            fill: #000 !important;
+        }
+
+        /* ============================================================
+       REMOVE ALL SIDEBAR HOVER EFFECTS COMPLETELY
+       ============================================================ */
+
+        .navbar-nav .nav-item .nav-link,
+        .navbar-nav .nav-item .menu-link {
+            background: none !important;
+            color: #000 !important;
+            transition: none !important;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover,
+        .navbar-nav .nav-item .menu-link:hover {
+            background: none !important;
+            color: #000 !important;
+            transform: none !important;
+            box-shadow: none !important;
+            opacity: 1 !important;
+        }
+
+        /* Remove icon hover */
+        .navbar-nav .nav-item .nav-link:hover i,
+        .navbar-nav .nav-item .menu-link:hover i {
+            color: #000 !important;
+            transform: none !important;
+        }
+
+        /* Remove li:hover background effect */
+        .navbar-nav .nav-item:hover>.nav-link,
+        .navbar-nav .nav-item:hover>.menu-link {
+            background: none !important;
+            color: #000 !important;
+        }
+
+        /* Active link hover fix */
+        .nav-link.active,
+        .nav-link.active:hover {
+            background: none !important;
+            color: #000 !important;
+        }
+
+        /* Remove focus/hover flicker */
+        .nav-link:focus:hover,
+        .menu-link:focus:hover {
+            background: none !important;
+            color: #000 !important;
+        }
+
+        /* ============================================================
+       MAKE ::before INDICATOR BLACK (default & hover)
+       ============================================================ */
+
+        /* Default indicator */
+        .navbar-nav .nav-link::before,
+        .navbar-nav .menu-link::before {
+            background-color: #000 !important;
+            opacity: 1 !important;
+        }
+
+        /* Hover indicator remains black */
+        .navbar-nav .nav-link:hover::before,
+        .navbar-nav .menu-link:hover::before {
+            background-color: #000 !important;
+            opacity: 1 !important;
+        }
+
+        /* Active indicator also black */
+        .navbar-nav .nav-link.active::before,
+        .navbar-nav .menu-link.active::before {
+            background-color: #000 !important;
+            opacity: 1 !important;
+        }
+
+        /* ============================================================ */
+
+        /* Breadcrumb Minimal */
+        .minimal-breadcrumb {
+            background: transparent;
+            padding-left: 0;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .minimal-breadcrumb .breadcrumb-item a {
+            color: #C89D66;
+            font-weight: 500;
+        }
+
+        /* Header Card */
+        .minimal-header-card {
+            background: #ffffff;
+            padding: 18px 25px;
+            border-radius: 10px;
+            border: 1px solid #efefef;
+            margin-bottom: 25px;
+        }
+
+        /* Stat Cards */
+        .minimal-stats-card {
+            background: #ffffff;
+            border: 1px solid #efefef;
+            border-radius: 10px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s ease;
+        }
+
+        .minimal-stats-card:hover {
+            border-color: #C89D66;
+            background: rgba(200, 157, 102, 0.06);
+        }
+
+        .minimal-stats-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            background: rgba(200, 157, 102, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .minimal-stats-icon i {
+            font-size: 22px;
+            color: #C89D66 !important;
+        }
+
+        .minimal-value {
+            font-size: 26px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .minimal-label {
+            font-size: 13px;
+            margin-top: -3px;
+            color: #666;
+        }
+
+        .minimal-content-box {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border: 1px solid #efefef;
+            margin-bottom: 40px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div id="layout-wrapper">
+
+        <!-- ===================== TOPBAR ===================== -->
+        <header id="page-topbar">
+            <div class="layout-width">
+                <div class="navbar-header d-flex justify-content-between">
+
+                    <button type="button" class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger">
+                        <span class="hamburger-icon"><span></span><span></span><span></span></span>
+                    </button>
+
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
+                            data-toggle="fullscreen">
+                            <i class="bx bx-fullscreen fs-22"></i>
+                        </button>
+
+                        <div class="dropdown ms-sm-3 header-item topbar-user">
+                            <button type="button" class="btn" data-bs-toggle="dropdown">
+                                <span class="d-flex align-items-center">
+                                    <img class="rounded-circle header-profile-user"
+                                        src="{% static 'assets/images/logo/avatar-1.jpg' %}">
+                                    <span class="text-start ms-xl-2 d-none d-xl-inline-block fw-medium">ADMIN</span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="{% url 'admin_logout' %}">
+                                    <i class="mdi mdi-logout text-muted fs-16 me-1"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ===================== SIDEBAR ===================== -->
+        <div class="app-menu navbar-menu">
+
+            <div class="navbar-brand-box">
+                <a href="{% url 'admin_home' %}" class="logo logo-dark">
+                    <span class="logo-sm"><img src="{% static 'assets/images/logo/favicon.png' %}" height="22"></span>
+                    <span class="logo-lg"><img src="{% static 'assets1/images/logo-dark.png' %}" height="17"></span>
+                </a>
+
+                <a href="{% url 'admin_home' %}" class="logo logo-light">
+                    <span class="logo-sm"><img src="{% static 'assets/images/logo/011_logo.png' %}" height="40"></span>
+                    <span class="logo-lg"><img src="{% static 'assets/images/logo/011_logo.png' %}" height="100"></span>
+                </a>
+            </div>
+
+            <!-- Sidebar User -->
+            <div class="dropdown sidebar-user m-1 rounded">
+                <button class="btn" data-bs-toggle="dropdown">
+                    <span class="d-flex align-items-center gap-2">
+                        <img class="rounded header-profile-user" src="{% static 'assets1/images/users/avatar-1.jpg' %}">
+                        <span>
+                            <span class="fw-medium">Anna Adame</span><br>
+                            <span class="fs-14"><i class="ri-circle-fill fs-10 text-success"></i> Online</span>
+                        </span>
+                    </span>
+                </button>
+
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="{% url 'admin_logout' %}">
+                        <i class="mdi mdi-logout text-muted fs-16 me-1"></i> Logout
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation -->
+            <div id="scrollbar" style="height: calc(100vh - 200px); overflow-y: auto;">
+                <div class="container-fluid">
+                    <ul class="navbar-nav" id="navbar-nav">
+
+                        <li class="menu-title"><span>User</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'admin_user_profile' %}">
+                                <i class="ri-user-3-line"></i><span>View User</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-title"><span>Advocate</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'pending_advocates' %}">
+                                <i class="ri-time-line"></i><span>Pending Advocates</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'verified_advocates' %}">
+                                <i class="ri-user-follow-line"></i><span>Approved Advocates</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'admin_sos_alerts' %}">
+                                <i class="ri-alarm-warning-line" style="color: red !important;"></i><span
+                                    style="color: red !important; font-weight: bold;">Emergency Alerts</span></a>
+                        </li>
+
+                        <li class="menu-title"><span>Laws</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'addlaw' %}">
+                                <i class="ri-add-box-line"></i><span>Add Law</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'admin_viewlaw' %}">
+                                <i class="ri-book-2-line"></i><span>View Law</span></a>
+                        </li>
+
+                        <li class="menu-title"><span>Templates</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'addtemplate' %}">
+                                <i class="ri-file-add-line"></i><span>Add Template</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'admin_template_list' %}">
+                                <i class="ri-file-list-line"></i><span>View Template</span></a>
+                        </li>
+
+                        <li class="menu-title"><span>Legal Offices</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'add_legal_office' %}">
+                                <i class="ri-home-4-line"></i><span>Add Offices</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'admin_view_legal_office' %}">
+                                <i class="ri-building-4-line"></i><span>View Offices</span></a>
+                        </li>
+
+
+                        <li class="menu-title"><span>Challan</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'admin_challan_view' %}">
+                                <i class="ri-exchange-dollar-line"></i><span>Transactions</span></a>
+                        </li>
+
+
+
+                        {% comment %} <li class="menu-title"><span>Awareness Content</span></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="#">
+                                <i class="ri-play-circle-line"></i><span>Add Reel</span></a>
+                        </li> {% endcomment %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+
+        <!-- ===================== MAIN CONTENT ===================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- Breadcrumb -->
+                    <div class="row">
+                        <div class="col-12">
+                            <ol class="breadcrumb minimal-breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'admin_home' %}">Home</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Header -->
+                    <div class="minimal-header-card">
+                        <h2 class="fw-semibold text-dark mb-1">Welcome, {{ admin_username }} 👋</h2>
+                        <p class="text-muted small">Admin ID: <strong>{{ admin_id }}</strong></p>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="row g-3 mb-4">
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="minimal-stats-card">
+                                <div class="minimal-stats-icon"><i class="ri-user-3-line"></i></div>
+                                <div>
+                                    <h4 class="minimal-value counter" data-target="{{ total_users }}">0</h4>
+                                    <p class="minimal-label">Total Users</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="minimal-stats-card">
+                                <div class="minimal-stats-icon"><i class="ri-user-follow-line"></i></div>
+                                <div>
+                                    <h4 class="minimal-value counter" data-target="{{ total_advocates }}">0</h4>
+                                    <p class="minimal-label">Approved Advocates</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="minimal-stats-card">
+                                <div class="minimal-stats-icon"><i class="ri-time-line"></i></div>
+                                <div>
+                                    <h4 class="minimal-value counter" data-target="{{ pending_advocates }}">0</h4>
+                                    <p class="minimal-label">Pending Approvals</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="minimal-stats-card">
+                                <div class="minimal-stats-icon"><i class="ri-file-list-line"></i></div>
+                                <div>
+                                    <h4 class="minimal-value counter" data-target="{{ total_templates }}">0</h4>
+                                    <p class="minimal-label">Templates Added</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="minimal-content-box">
+                        <p class="text-muted mb-0">
+                            Use the left sidebar to manage all modules such as users, advocates, laws, templates, and
+                            payments.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © LAWLY.
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Back to Top -->
+    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- JS -->
+    <script src="{% static 'assets1/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets1/libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'assets1/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'assets1/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'assets1/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'assets1/js/plugins.js' %}"></script>
+    <script src="{% static 'assets1/libs/prismjs/prism.js' %}"></script>
+    <script src="{% static 'assets1/js/app.js' %}"></script>
+
+    <!-- ===================== Animated Counter Script ===================== -->
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Higher = slower
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const current = +counter.innerText;
+                const increment = Math.ceil(value / speed);
+
+                if (current < value) {
+                    counter.innerText = current + increment;
+                    setTimeout(animate, 10);
+                } else {
+                    counter.innerText = value;
+                }
+            };
+
+            animate();
+        });
+    </script>
+
+</body>
+
+</html>

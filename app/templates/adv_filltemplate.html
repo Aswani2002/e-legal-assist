@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ template.template_name }}</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #e7e3dc, #c89d66);
+            margin: 0;
+            padding: 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #c89d66;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 25px 50px;
+            transition: .3s;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            background: #1b1f2f;
+            transform: translateX(-3px);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 20px auto 50px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            animation: fadeIn .4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p.description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 15px;
+            color: #444;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #c89d66;
+            box-shadow: 0 0 6px rgba(200,157,102,0.3);
+        }
+
+        button {
+            background: #c89d66;
+            color: #fff;
+            padding: 13px 32px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: .3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1b1f2f;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back Button -->
+
+
+<div class="container">
+    <a href="{% url 'adv_template_list' %}" class="back-btn">
+    <i class="fas fa-arrow-circle-left"></i> ←
+    </a>
+    <h2>{{ template.template_name }}</h2>
+    
+    <p class="description">{{ template.description }}</p>
+
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <label>{{ field.label }}</label><br>
+            {{ field }}<br><br>
+        {% endfor %}
+
+        <button type="submit">Download DOCX</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Lawly | Login</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/images/logo/favicon.png' %}" />
+
+    <!-- FONTS + STYLES -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #e7e3dc, #c89d66);
+      }
+      /* Hide Google Translate branding */
+      .goog-logo-link {
+        display: none !important;
+      }
+      .goog-te-gadget {
+        color: transparent !important;
+      }
+      .goog-te-gadget .goog-te-combo {
+        color: #333 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navs">
+      <!-- :: Navbar -->
+      <nav class="nav-bar nav-bar-2">
+        <div class="container">
+          <div class="box-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <a href="index.html" class="logo-nav">
+                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+              </a>
+              <a href="#open-nav-bar-menu" class="open-nav-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="nav-bar-link" id="open-nav-bar-menu">
+              <ul class="level-1">
+                <li>
+                  <a href="{% url 'home' %}" class="active">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'view_categories' %}">Laws</a>
+                </li>
+
+                <li>
+                  <a href="#">Advocates</a>
+                </li>
+                <li>
+                  <a href="#">Challan</a>
+                </li>
+                <li>
+                  <a href="#">Legal Office</a>
+                </li>
+              </ul>
+            </div>
+            <ul>
+              <li>
+                <div id="google_translate_element"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+   
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+  </body>
+</html>

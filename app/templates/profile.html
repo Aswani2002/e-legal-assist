@@ -1,0 +1,628 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- :: Required Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout. Decision specially designed for Attorneys, Lawyers, Law Firm, Law Advisers, Legal Officers, Legal Advisers, Legal offices, Barristers at Law, Counsels, Solicitors, Advocates and other legal and law related services. Decision comes with most advanced and latest web technologies, enjoyable UX and the most beautiful design trends. Our template provides a platform to simply edit elements, choose styles and play around with the look and feel of your site!!">
+    <meta name="keywords"
+        content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor">
+
+    <!-- :: Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- :: Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}">
+
+    <!-- :: Title -->
+    <title>Decision - Lawyer &amp; Attorney HTML Template</title>
+
+    <!-- :: Google Fonts -->
+    <link rel="stylesheet"
+        href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- :: Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}">
+
+    <!-- :: Flaticon -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}">
+
+    <!-- :: OWL Carousel -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+
+    <!-- :: Nice Select CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+
+    <!-- :: Lity -->
+    <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}">
+
+    <!-- :: Animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+    <!-- :: Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+    <!-- :: Style Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+    <style>
+        /* ✅ Updated Background Gradient */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e7e3dc, #c89d66);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hide Google Translate branding */
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            color: transparent !important;
+        }
+
+        .goog-te-gadget .goog-te-combo {
+            color: #333 !important;
+        }
+
+        /* PROFILE CARD */
+        .profile-container {
+            max-width: 900px;
+            margin: 70px auto;
+            margin-top: calc(40vh - 220px);
+
+            padding: 40px 45px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-title h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1d;
+        }
+
+        .quote-item input,
+        .quote-item select {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            transition: .25s;
+            background: #fff;
+            appearance: none;
+        }
+
+        .quote-item input:focus,
+        .quote-item select:focus {
+            border-color: #C89D66;
+            box-shadow: 0 0 8px rgba(200, 157, 102, 0.3);
+        }
+
+        .quote-item select {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23888" height="18" width="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 14px;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #c89d66;
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .back-btn:hover {
+            background: #1b1f2f;
+            transform: translateY(-2px);
+        }
+
+        .btn-save {
+            width: 100%;
+            background: #C89D66;
+            color: #fff;
+            height: 52px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .btn-save:hover {
+            background: #a97c4a;
+            transform: translateY(-2px);
+        }
+
+        hr {
+            margin: 35px 0;
+            border-color: #ddd;
+        }
+
+        @media(max-width:575px) {
+            .profile-container {
+                margin: 40px 18px;
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- :: Loading -->
+    <div class="loading">
+        <div class="loading-box">
+            <div class="sk-fading-circle">
+                <div class="sk-circle1 sk-circle"></div>
+                <div class="sk-circle2 sk-circle"></div>
+                <div class="sk-circle3 sk-circle"></div>
+                <div class="sk-circle4 sk-circle"></div>
+                <div class="sk-circle5 sk-circle"></div>
+                <div class="sk-circle6 sk-circle"></div>
+                <div class="sk-circle7 sk-circle"></div>
+                <div class="sk-circle8 sk-circle"></div>
+                <div class="sk-circle9 sk-circle"></div>
+                <div class="sk-circle10 sk-circle"></div>
+                <div class="sk-circle11 sk-circle"></div>
+                <div class="sk-circle12 sk-circle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- :: Navs -->
+    <header class="navs">
+        <!-- :: Navbar -->
+        <nav class="nav-bar nav-bar-2">
+            <div class="container">
+                <div class="box-content d-flex align-items-center justify-content-between">
+                    <div class="logo">
+                        <a href="index.html" class="logo-nav">
+                            <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}"
+                                alt="01 Logo" />
+                            <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}"
+                                alt="02 Logo" />
+                        </a>
+                        <a href="#open-nav-bar-menu" class="open-nav-bar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                    <div class="nav-bar-link" id="open-nav-bar-menu">
+                        <ul class="level-1">
+                            <li>
+                                <a href="{% url 'home' %}" class="active">Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'profile' %}">Profile</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'view_categories' %}">Laws</a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'advocates' %}">Advocates</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'challan_form' %}">Challan</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'legal_office_list' %}">Legal Offices</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <div id="google_translate_element"></div>
+
+                        <li>
+                            <a class="btn-1" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- :: Search Box -->
+    {% comment %} <div class="search-box">
+        <form>
+            <input type="search" placeholder="Search Here..">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <i class="fas fa-times close-search"></i>
+    </div> {% endcomment %}
+
+    <!-- :: Menu Box -->
+    {% comment %} <div class="menu-box">
+        <div class="inner-menu">
+            <div class="website-info">
+                <a href="#" class="logo"><img class="img-fluid" src="{% static 'assets/images/logo/02_logo.png' %}"
+                        alt="02 Logo"></a>
+                <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law
+                    Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+            </div>
+
+            <div class="follow-us">
+                <h4>Follow Us</h4>
+                <ul class="icon-follow">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+            <div class="exit-menu-box">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <!-- :: Header -->
+    {% comment %} <header class="header header-2" id="page">
+        <div class="header-owl header-owl-2 owl-carousel owl-theme">
+            <div class="sec-hero display-table"
+                style="background-image: url({% static 'assets/images/header/04_header.jpg' %})">
+                <div class="table-cell">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="box-hero d-flex align-items-center justify-content-between">
+                            <div class="banner">
+                                <div class="headline-top">Need Any Help!</div>
+                                <h1 class="handline">Get Legal Help From Us</h1>
+                                <p class="about-website">Decision Are A Professional Attorney &amp; Lawyers Services
+                                    Provider Institutions. Suitable For Law Firm, Injury Law, Traffic Ticket Attorney,
+                                    Legacy And More.</p>
+                                <a class="btn-1 btn-2 move-section" href="#about-us">Let's Start</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header> {% endcomment %}
+
+    <!-- :: Features -->
+    {% comment %} <section class="features features-2">
+        <div class="container">
+            <div class="features-box">
+                <div class="features-item">
+                    <i class="flaticon-detective"></i>
+                    <div class="item-text">
+                        <span>With Extensive High Skill</span>
+                        <h4>Expert Attorneys</h4>
+                    </div>
+                </div>
+                <div class="features-item">
+                    <i class="flaticon-oath"></i>
+                    <div class="item-text">
+                        <span><a href="{% url 'logout' %}">Documents</a></span>
+                        <h4><a href="{% url 'template_list' %}">Documents</a></h4>
+                    </div>
+                </div>
+                <div class="features-item">
+                    <i class="flaticon-libra"></i>
+                    <div class="item-text">
+                        <span>Are High Then Other</span>
+                        <h4>Court Performance</h4>
+                    </div>
+                </div>
+                <div class="features-item">
+                    <i class="flaticon-oath"></i>
+                    <div class="item-text">
+                        <span><a href="{% url 'logout' %}">Documents</a></span>
+                        <h4><a href="{% url 'template_list' %}">Documents</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+
+    <!-- :: About -->
+    {% comment %} <section class="about about-2 py-100" id="about-us">
+        <div class="container">
+
+        </div>
+    </section> {% endcomment %}
+
+
+
+
+    <!-- :: Practice Area -->
+
+
+    <!-- :: Blog Section -->
+    <div class="profile-container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- UPDATE PROFILE -->
+        <div class="profile-title">
+            <h3>Update Your Details</h3>
+        </div>
+        <a href="{% url 'home' %}" class="back-btn">←</a>
+        <form method="POST" action="{% url 'profile' %}">
+            {% csrf_token %}
+            <input type="hidden" name="update_profile" value="1">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="quote-item">
+                        <input type="text" name="fullname" value="{{ user.fullname }}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="quote-item">
+                        <input type="email" name="email" value="{{ user.email }}" readonly>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="quote-item">
+                        <select name="language" required>
+                            <option value="English" {% if user.language == 'English' %}selected{% endif %}>English
+                            </option>
+                            <option value="Malayalam" {% if user.language == 'Malayalam' %}selected{% endif %}>Malayalam
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="quote-item">
+                        <input type="text" name="location" value="{{ user.location }}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="quote-item">
+                        <input type="text" name="contact_no" value="{{ user.contact_no }}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+        <!-- CHANGE PASSWORD -->
+        <div class="profile-title">
+            <h3>Change Password</h3>
+        </div>
+
+        <form method="POST" action="{% url 'profile' %}">
+            {% csrf_token %}
+            <input type="hidden" name="change_password" value="1">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="quote-item">
+                        <input type="password" name="old_password" placeholder="Old Password" required>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="quote-item">
+                        <input type="password" name="new_password" placeholder="New Password" required>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="quote-item">
+                        <input type="password" name="confirm_password" placeholder="Confirm New Password" required>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-2">
+                    <button type="submit" class="btn-save">Change Password</button>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+        <!-- REVIEWS GIVEN SECTION -->
+        <div class="profile-title">
+            <h3>Reviews I've Given</h3>
+        </div>
+
+        <div class="reviews-list" style="margin-top:20px;">
+            {% if feedbacks %}
+            <ul class="list-unstyled">
+                {% for feedback in feedbacks %}
+                <li style="margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:15px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong style="font-size:16px;">To: {{ feedback.advocate.advocate_name }}</strong>
+                        <span style="color:#888; font-size:13px;">{{ feedback.created_at|date:"M d, Y" }}</span>
+                    </div>
+
+                    <div class="star-rating-display" style="color:#ffca08; margin: 5px 0; font-size: 18px;">
+                        {% if feedback.rating >= 1 %}★{% else %}☆{% endif %}
+                        {% if feedback.rating >= 2 %}★{% else %}☆{% endif %}
+                        {% if feedback.rating >= 3 %}★{% else %}☆{% endif %}
+                        {% if feedback.rating >= 4 %}★{% else %}☆{% endif %}
+                        {% if feedback.rating >= 5 %}★{% else %}☆{% endif %}
+                    </div>
+
+                    <p style="color:#555; font-size:15px; margin-top:5px;">{{ feedback.message }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-center" style="color:#777; font-style:italic;">You haven't written any reviews yet.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- :: Footer -->
+    {% comment %} <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="logo">
+                        <img class="img-fluid" src="{% static 'assets/images/logo/03_logo.png' %}" alt="Footer Logo">
+                        <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable
+                            For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-2">
+                    <div class="footer-title">
+                        <h4>Company</h4>
+                    </div>
+                    <ul class="links">
+                        <li><a href="01_about.html">About Us</a></li>
+                        <li><a href="01_advisors.html">Our Advisors</a></li>
+                        <li><a href="01_testimonial.html">Testimonial</a></li>
+                        <li><a href="01_case-study.html">Case Studies</a></li>
+                        <li><a href="02_blog.html">Blog</a></li>
+                        <li><a href="01_contact.html">Contact</a></li>
+                        <li><a href="01_careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-2">
+                    <div class="footer-title">
+                        <h4>Product</h4>
+                    </div>
+                    <ul class="links">
+                        <li><a href="01_practice-areas.html">Practice Areas</a></li>
+                        <li><a href="01_timeline.html">TimeLine</a></li>
+                        <li><a href="01_sponsors.html">Sponsors</a></li>
+                        <li><a href="01_faq.html">FAQs</a></li>
+                        <li><a href="01_shop.html">Shop</a></li>
+                        <li><a href="404_error.html">Error Page</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="newsletter">
+                        <h5>Newsletter</h5>
+                        <p>Sign up for industry alerts, our latest news, thoughts, and insights from Decision.</p>
+                        <form>
+                            <input type="email" name="email" placeholder="Your Email Address ">
+                            <a href="#"><i class="fas fa-arrow-right"></i></a>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>@ 2025 Lawly.</p>
+                <ul>
+                    <li><a href="#">Terms &amp; Conditions </a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer> {% endcomment %}
+
+    <!-- :: Button Dark Mode -->
+    <div class="dark-mode-decision">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- :: Scroll UP -->
+    <div class="scroll-up">
+        <a href="#page" class="move-section">
+            <i class="fas fa-long-arrow-alt-up"></i>
+        </a>
+    </div>
+
+    <!-- :: jQuery JS -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+    <!-- :: Popper JS -->
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+    <!-- :: BootStrap JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- :: OWL Carousel -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- :: Nice Select -->
+    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+    <!-- :: Waypoints -->
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+    <!-- :: CounterUp -->
+    <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+    <!-- :: Lity -->
+    <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+    <!-- :: Main JS -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    <!-- :: Ajax Script -->
+    <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

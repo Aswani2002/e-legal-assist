@@ -1,0 +1,46 @@
+{% extends 'laws/base.html' %}
+
+{% block title %}All Laws - LawChat{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h1 class="text-center">Browse Laws</h1>
+    <p class="text-center" style="color: var(--text-muted);">Explore a comprehensive database of laws. Search below to
+        find specific regulations.</p>
+</div>
+
+<div class="mb-4">
+    <form method="get" action=".">
+        <input type="text" name="q" placeholder="Search laws (e.g., 'accident', 'traffic')..."
+            value="{{ query|default:'' }}">
+    </form>
+</div>
+
+<div class="grid">
+    {% for law in laws %}
+    <a href="{% url 'law_detail' law.id %}" style="text-decoration: none; color: inherit;">
+        <div class="card">
+            <span
+                style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-color);">{{
+                law.category }}</span>
+            <h3 class="mt-4">{{ law.title }}</h3>
+            <p style="color: var(--text-muted);">{{ law.description|truncatewords:20 }}</p>
+            {% if law.punishment %}
+            <p style="color: #ef4444; font-size: 0.85rem; margin-top: 0.5rem;">
+                <strong>Penalty:</strong> {{ law.punishment|truncatewords:10 }}
+            </p>
+            {% endif %}
+            <div
+                style="margin-top: 1rem; text-align: right; color: var(--primary-color); font-weight: 600; font-size: 0.9rem;">
+                Read More &rarr;
+            </div>
+        </div>
+    </a>
+    {% empty %}
+    <div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 3rem;">
+        <h3>No laws found matching your search.</h3>
+        <p>Try searching for something else like "Traffic" or "Consumer".</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- :: Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- :: Title -->
+    <title>Legal Offices</title>
+
+    <!-- :: Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <!-- :: Fonts -->
+    <link rel="stylesheet" href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" />
+
+    <!-- :: Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+    <!-- :: Theme CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+    <!-- :: Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #e7e3dc, #c89d66);
+        margin: 0;
+        padding: 0;
+      }
+
+      .law-container {
+        max-width: 1100px;
+        margin: 60px auto;
+        margin-top: calc(40vh - 220px);
+        padding: 40px 45px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .title {
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #222;
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #c89d66;
+        color: #fff;
+        padding: 10px 26px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 25px;
+        transition: 0.25s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      .back-btn:hover {
+        background: #1b1f2f;
+        transform: translateY(-2px);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      th {
+        background: #262b3e;
+        color: #fff;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      td {
+        padding: 14px;
+        font-size: 15px;
+        color: #333;
+        background: #fafafa;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+      }
+
+      tr:hover td {
+        background: #f1ece3;
+      }
+
+      .open-link {
+        background: #c89d66;
+        padding: 6px 14px;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .open-link:hover {
+        background: #a97c4a;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- :: NAVBAR -->
+    <header class="navs">
+      <!-- :: Navbar -->
+      <nav class="nav-bar nav-bar-2">
+        <div class="container">
+          <div class="box-content d-flex align-items-center justify-content-between">
+            <div class="logo">
+              <a href="index.html" class="logo-nav">
+                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+              </a>
+              <a href="#open-nav-bar-menu" class="open-nav-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="nav-bar-link" id="open-nav-bar-menu">
+              <ul class="level-1">
+                <li>
+                  <a href="{% url 'home' %}" class="active">Home</a>
+                </li>
+                <li>
+                  <a href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'view_categories' %}">Laws</a>
+                </li>
+
+                <li>
+                  <a href="{% url 'advocates' %}">Advocates</a>
+                </li>
+                <li>
+                  <a href="{% url 'challan_form' %}">Challan</a>
+                </li>
+                <li>
+                  <a href="{% url 'legal_office_list' %}">Legal Offices</a>
+
+                </li>
+              </ul>
+            </div>
+            <ul>
+              <div id="google_translate_element"></div>
+
+              <li>
+                {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- :: MAIN CONTENT -->
+    <div class="law-container">
+      <h3 class="title">Legal Offices</h3>
+
+      <a href="{% url 'home' %}" class="back-btn">←</a>
+
+      <table>
+        <tr>
+          <th>Office Name</th>
+          <th>Address</th>
+          <th>Location</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Details</th>
+        </tr>
+
+        {% for office in offices %}
+          <tr>
+            <td>{{ office.office_name }}</td>
+            <td>{{ office.address }}</td>
+            <td>{{ office.location }}</td>
+            <td>{{ office.contact_no }}</td>
+            <td>{{ office.email }}</td>
+
+            <td>
+              <a href="{% url 'legal_office_detail' office.office_id %}" class="open-link">View</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="6" style="text-align:center; color:#666;">No legal offices available.</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <!-- :: SCRIPTS -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

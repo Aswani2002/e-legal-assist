@@ -1,0 +1,206 @@
+def chat_api(request):
+    if request.method != 'GET':
+        return JsonResponse({'response': 'Invalid request'}, status=400)
+
+    query = request.GET.get('message', '').strip()
+    if not query:
+        return JsonResponse({'response': "Please ask me about a law."})
+
+    # -----------------------------------------
+    # 0. DETECT IF USER ASKED A SPECIFIC SECTION
+    # -----------------------------------------
+    import re
+    # Detect queries like "BNS Section 303", "Section 303", "BNS 303", "303 BNS"
+    section_pattern = r'\b(bns\s*section\s*\d+|section\s*\d+|bns\s*\d+)\b'
+    force_bns_answer = bool(re.search(section_pattern, query.lower()))
+
+    # --------------------------
+    # 1. SIMPLE SEARCH PIPELINE
+    # --------------------------
+    query_words = query.lower().split()
+    stop_words = {
+        'i','me','my','myself','we','our','what','which','who','whom','this','that','is','are','was','were',
+        'be','been','being','have','has','had','do','does','did','a','an','the','and','but','if','or',
+        'because','as','until','while','of','at','by','for','with','about','against','between','into',
+        'through','during','before','after','above','below','to','from','up','down','in','out','on','off',
+        'over','under','again','further','then','once','here','there','when','where','why','how','all',
+        'any','both','each','few','more','most','other','some','such','no','nor','not','only','own',
+        'same','so','than','too','very','can','will','just','don','should','now','please','tell','me'
+    }
+    keywords = [w for w in query_words if w not in stop_words]
+
+    scored_laws = []
+    all_laws = Law.objects.all()
+
+    for law in all_laws:
+        score = 0
+
+        if query.lower() in law.title.lower():
+            score += 10
+
+        for keyword in keywords:
+            if keyword in law.title.lower():
+                score += 5
+            elif keyword in law.description.lower():
+                score += 2
+            elif law.punishment and keyword in law.punishment.lower():
+                score += 2
+            elif keyword in law.category.lower():
+                score += 3
+            elif len(keyword) > 4 and (keyword in law.title.lower() or keyword in law.description.lower()):
+                score += 1
+
+        if score > 0:
+            scored_laws.append((score, law))
+
+    scored_laws.sort(key=lambda x: x[0], reverse=True)
+
+
+
+    # -----------------------------------
+    # 2. GEMINI AI ANSWER (WHEN ENABLED)
+    # -----------------------------------
+    if GOOGLE_API_KEY:
+        try:
+
+            # -------------------------------------------------
+            # CASE A: DB CONTEXT MODE
+            # Use ONLY IF matched AND user is NOT asking a section
+            # -------------------------------------------------
+            if scored_laws and not force_bns_answer:
+
+                top_laws = scored_laws[:3]
+
+                context_text = ""
+                for score, law in top_laws:
+                    context_text += (
+                        f"Title: {law.title}\n"
+                        f"Description: {law.description}\n"
+                        f"Punishment: {law.punishment}\n"
+                        f"Bailable: {law.bailable_status}\n"
+                        f"Cognizable: {law.cognizable_status}\n"
+                        f"Triable By: {law.triable_by}\n\n"
+                    )
+
+                prompt = f"""
+You are an expert Indian Legal Assistant.
+Answer the user's question using ONLY the context provided below.
+
+CONTEXT FROM DATABASE:
+{context_text}
+
+USER QUESTION:
+{query}
+
+INSTRUCTIONS:
+- Provide a clear, accurate legal explanation.
+- State punishment, bailable status, cognizable status, and trial court.
+- If any detail is missing in the database, say "Not available in database".
+- Use ONLY HTML tags: <p>, <strong>, <ul>, <li>, <em>.
+- Do NOT use markdown.
+"""
+
+            # -------------------------------------------------
+            # CASE B: FALLBACK — BNS/IPC/LEGAL EXPERT MODE
+            # Triggered when:
+            #   1. user asks "Section 303", "BNS 303", etc.
+            #   2. OR no DB match exists
+            # -------------------------------------------------
+            else:
+                prompt = f"""
+You are an expert Indian Legal Assistant specializing in:
+Bharatiya Nyaya Sanhita (BNS) 2023,
+Indian Penal Code (IPC),
+Criminal Procedure Code (CrPC),
+Evidence Act,
+IT Act, and other Indian laws.
+
+The internal database does NOT contain this section or law.
+So you must answer using your own expert legal knowledge.
+
+USER QUESTION:
+{query}
+
+YOUR TASKS:
+1. Identify the MOST relevant legal provision (BNS preferred, else IPC or others).
+2. Provide:
+   - Section number and statute
+   - Definition / ingredients of the offence or concept
+   - Punishment
+   - Bailable or Non-bailable status
+   - Cognizable or Non-cognizable status
+   - Trial court (Magistrate or Sessions)
+3. If the question is conceptual, explain clearly.
+4. If about procedure, provide accurate step-by-step legal procedure.
+5. If not a legal query, politely state that it is outside legal scope.
+
+FORMATTING RULES:
+- Use ONLY: <p>, <strong>, <ul>, <li>, <em>.
+- Do NOT use markdown.
+- End the response with:
+  <p><em>For personalised legal advice, consult a licensed advocate.</em></p>
+"""
+
+            # -------------------------
+            # GEMINI CALL
+            # -------------------------
+            model = genai.GenerativeModel("models/gemini-2.5-flash")
+            response = model.generate_content(prompt)
+
+            return JsonResponse({'response': response.text})
+
+        except Exception as e:
+            print("Gemini Error:", e)
+
+
+
+    # -------------------------------------------------------
+    # 3. FALLBACK HTML RESPONSE (IF GEMINI FAILS OR DISABLED)
+    # -------------------------------------------------------
+    if scored_laws and not force_bns_answer:
+        top_laws = scored_laws[:5]
+        response_text = "I found some laws matching your query:<br><ul>"
+
+        for score, law in top_laws:
+            punishment_text = (
+                f"<br><div style='margin-top:8px; padding:8px; "
+                f"background:rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; border-radius:4px;'>"
+                f"<strong style='color:#ef4444;'>Penalty:</strong> {law.punishment}</div>"
+                if law.punishment else ""
+            )
+
+            extra_info = "<div style='margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;'>"
+            if law.bailable_status and law.bailable_status != 'Not specified':
+                extra_info += f"<span style='background:#e0f7ff; padding:2px 8px; border-radius:12px;'>{law.bailable_status}</span>"
+                extra_info += f"<span style='background:#e0f7ff; padding:2px 8px; border-radius:12px;'>{law.cognizable_status}</span>"
+            if law.triable_by and law.triable_by != 'Not specified':
+                extra_info += f"<span style='background:#f1f1f1; padding:2px 8px; border-radius:12px;'>🏛️ {law.triable_by}</span>"
+            extra_info += "</div>"
+
+            response_text += f"""
+                <li style="margin-bottom: 24px;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <strong style='color:var(--accent-color); font-size:1.1rem;'>{law.title}</strong>
+                        <a href='/law/{law.pk}/download/' target='_blank'
+                           style='font-size:0.8rem; background:var(--primary-color); color:white; 
+                                  padding:4px 12px; border-radius:6px; text-decoration:none;'>⬇ Download</a>
+                    </div>
+                    <div>{law.description[:400]}...</div>
+                    {punishment_text}
+                    {extra_info}
+                </li>
+            """
+
+        response_text += "</ul>"
+        return JsonResponse({'response': response_text})
+
+    # --------------------
+    # NO MATCH AT ALL (NO GEMINI)
+    # --------------------
+    categories = ", ".join(set(Law.objects.values_list('category', flat=True)))
+    return JsonResponse({
+        'response':
+            f"No laws matched '{query}'.<br>"
+            f"My database includes: <b>{categories}</b>.<br>"
+            "Try keywords like theft, cybercrime, murder, cheque bounce, divorce, traffic."
+    })

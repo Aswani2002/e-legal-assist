@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Challan Payment Form</title>
+    <style>
+
+
+      
+      body {
+        font-family: Poppins, sans-serif;
+        background: linear-gradient(135deg, #e7e3dc, #c89d66);
+        padding: 40px;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      /* Perfect Back Button Placement */
+      .back-btn {
+        display: inline-block;
+        background: #c89d66;
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 20px;
+        transition: .3s;
+      }
+
+      .back-btn i {
+        margin-right: 8px;
+      }
+
+      .back-btn:hover {
+        background: #1b1f2f;
+        transform: translateX(-3px);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #c89d66;
+      }
+
+      label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border-radius: 8px;
+        border: none;
+        background: #c89d66;
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #1b1f2f;
+      }
+    </style>
+  </head>
+
+  <body> <header class="navs">
+            
+            <!-- :: Navbar -->
+            <nav class="nav-bar nav-bar-2">
+                <div class="container">
+                    <div class="box-content d-flex align-items-center justify-content-between">
+                        <div class="logo">
+                            <a href="index.html" class="logo-nav">
+                                <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo">
+                                <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo">
+                            </a>
+                            <a href="#open-nav-bar-menu" class="open-nav-bar">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </a>
+                        </div>
+                        <div class="nav-bar-link" id="open-nav-bar-menu">
+                            <ul class="level-1">
+                                <li><a href="{% url 'home' %}" class="active">Home</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'view_categories' %}" >Laws</a></li>
+
+            <li><a href="#">Advocates</a></li>
+            <li><a href="#">Challan</a></li>
+            <li><a href="#">Legal Office</a></li>
+                                   
+
+                                
+                            </ul>
+                            
+                        </div>
+                        <ul>
+                            <li> <a class="btn-1 " href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                        
+
+
+                       
+                    </div>
+                    
+                </div>
+            </nav>
+        </header>
+    <div class="container">
+
+      <!-- Back Button at Top, Perfect Position -->
+      <a href="{% url 'home' %}" class="back-btn">
+        <i class="fas fa-arrow-circle-left"></i> ←
+      </a>
+
+      <h2>Challan Payment Form</h2>
+
+      <form method="POST" action="{% url 'create_payment' %}">
+        {% csrf_token %}
+
+        <label>Challan Number</label>
+        <input type="text" name="challan_no" placeholder="Enter challan number" required />
+
+        <label>Offence Type</label>
+        <input type="text" name="offence_type" placeholder="Ex: Over-speeding" required />
+
+        <label>Offence Location</label>
+        <input type="text" name="offence_location" placeholder="Enter location" required />
+
+        <label>Issue Date</label>
+        <input type="date" name="issue_date" required />
+
+        <label>Due Date</label>
+        <input type="date" name="due_date" required />
+
+        <label>Fine Amount</label>
+        <input type="number" name="amount" placeholder="Enter fine amount" required />
+
+        <button type="submit">Proceed to Payment</button>
+      </form>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'laws/base.html' %}
+
+{% block title %}
+  {{ law.title }} - LawChat
+{% endblock %}
+
+{% block content %}
+  <div class="mb-4">
+    <a href="{% url 'law_list' %}" class="btn" style="background-color: transparent; border: 1px solid var(--text-muted); color: var(--text-muted);">&larr; Back to Laws</a>
+  </div>
+
+  <div class="card" style="padding: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <span style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-color);">{{ law.category }}</span>
+        <h1 class="mt-4" style="font-size: 2.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">{{ law.title }}</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Added on {{ law.created_at|date:'F j, Y' }}</p>
+      </div>
+      <div>
+        <a href="{% url 'download_law' law.pk %}" class="btn">Download Details ⬇️</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 2rem 0;" />
+
+    <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text-color);">
+      <h3>Description</h3>
+      <p>{{ law.description|linebreaks }}</p>
+
+      {% if law.punishment %}
+        <div style="margin-top: 2rem; background-color: rgba(220, 38, 38, 0.1); border-left: 4px solid #ef4444; padding: 1rem;">
+          <h3 style="color: #ef4444; margin-top: 0;">🛑 Punishment / Penalty</h3>
+          <p>{{ law.punishment }}</p>
+        </div>
+      {% endif %}
+
+      <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        {% if law.bailable_status %}
+          <div style="background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <strong style="color: var(--accent-color);">Bailable Status</strong>
+            <p style="margin: 0.5rem 0 0;">{{ law.bailable_status }}</p>
+          </div>
+        {% endif %}
+
+        {% if law.cognizable_status %}
+          <div style="background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <strong style="color: var(--accent-color);">Cognizable Status</strong>
+            <p style="margin: 0.5rem 0 0;">{{ law.cognizable_status }}</p>
+          </div>
+        {% endif %}
+
+        {% if law.triable_by %}
+          <div style="background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+            <strong style="color: var(--accent-color);">Triable By Court</strong>
+            <p style="margin: 0.5rem 0 0;">{{ law.triable_by }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

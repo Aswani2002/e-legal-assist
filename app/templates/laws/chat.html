@@ -1,0 +1,386 @@
+{% extends 'laws/base.html' %}
+{% load static %}
+
+{% block title %}Chat with LawBot - LawChat{% endblock %}
+{% block content %}
+
+<style>
+    /* ===== PAGE BASE ===== */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f6efe6, #d2b48c);
+        min-height: 100vh;
+        padding: 40px 0;
+    }
+
+    body.dark {
+        background: #262B3E !important;
+        color: #f1f1f1;
+    }
+
+    .chat-wrapper {
+        max-width: 920px;
+        margin: 90px auto;
+        padding: 0 20px;
+    }
+
+    /* ===== PREMIUM CONTAINER (CLEAR CHANGE) ===== */
+    .chat-container {
+        height: 82vh;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 26px;
+        box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        overflow: hidden;
+    }
+
+    body.dark .chat-container {
+        background: #1f2335;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    }
+
+    /* ===== HEADER ===== */
+    .chat-header {
+        padding: 22px 26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .chat-header {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .chat-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        margin: 0;
+        color: #3a2d1d;
+    }
+
+    body.dark .chat-header h1 {
+        color: #e8d8b0;
+    }
+
+    #theme-toggle {
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+        background: #c89d66;
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: 22px;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .back-btn:hover {
+        background: #1b1f2f;
+    }
+
+    body.dark .back-btn {
+        color: #222;
+    }
+
+    /* ===== CHAT AREA ===== */
+    #chat-history {
+        flex: 1;
+        padding: 24px;
+        overflow-y: auto;
+        background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.6),
+                rgba(255, 255, 255, 0.3));
+    }
+
+    body.dark #chat-history {
+        background: #151827;
+    }
+
+    /* ===== MESSAGE ===== */
+    .message {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .message.user {
+        justify-content: flex-end;
+    }
+
+    .bubble {
+        max-width: 70%;
+        padding: 15px 20px;
+        border-radius: 18px;
+        font-size: 15px;
+        line-height: 1.6;
+        animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .message.user .bubble {
+        background: linear-gradient(135deg, #c89d66, #b48752);
+        color: #fff;
+        border-bottom-right-radius: 6px;
+    }
+
+    .message.bot .bubble {
+        background: #fff;
+        color: #333;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-bottom-left-radius: 6px;
+    }
+
+    body.dark .message.bot .bubble {
+        background: #262b3e;
+        color: #eee;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== AVATAR ===== */
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #262B3E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    body.dark .avatar {
+        background: #c89d66;
+        color: #222;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ===== TIMESTAMP ===== */
+    .timestamp {
+        font-size: 11px;
+        margin-top: 4px;
+        opacity: 0.6;
+    }
+
+    /* ===== TYPING INDICATOR ===== */
+    .typing {
+        font-size: 14px;
+        opacity: 0.6;
+    }
+
+    .typing span {
+        animation: blink 1.4s infinite both;
+    }
+
+    .typing span:nth-child(2) {
+        animation-delay: .2s;
+    }
+
+    .typing span:nth-child(3) {
+        animation-delay: .4s;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: .2;
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: .2;
+        }
+    }
+
+    /* ===== INPUT AREA ===== */
+    .input-box {
+        padding: 18px;
+        display: flex;
+        gap: 12px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark .input-box {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    #user-input {
+        flex: 1;
+        height: 52px;
+        border-radius: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        padding: 0 18px;
+        font-size: 15px;
+    }
+
+    body.dark #user-input {
+        background: #1f2335;
+        color: #fff;
+    }
+
+    #send-btn {
+        height: 52px;
+        padding: 0 28px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #c89d66, #a77b48);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    #send-btn:hover {
+        transform: translateY(-1px);
+    }
+</style>
+
+<div class="chat-wrapper">
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <a href="{% url 'home' %}" class="back-btn">←</a>
+            <h1>LawBot Assistant</h1>
+            {% comment %} <button id="theme-toggle">🌙</button> {% endcomment %}
+        </div>
+
+        <div id="chat-history">
+            <div class="message bot">
+                <div class="avatar">
+                    <img src="{% static 'assets/images/bot.png' %}">
+                </div>
+                <div>
+                    <div class="bubble">
+                        Hello! Ask me about Indian laws, punishments, bail, rights, and procedures.
+                    </div>
+                    <div class="timestamp">Just now</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <input id="user-input" placeholder="Type your legal question…" />
+            <button id="send-btn">Send</button>
+        </div>
+
+    </div>
+
+    <!-- HIDDEN DOWNLOAD FORM -->
+    <form id="download-form" action="{% url 'download_chat' %}" method="POST" style="display:none;">
+        {% csrf_token %}
+        <input type="hidden" name="content" id="download-content">
+    </form>
+
+</div>
+
+<script>
+    const chatHistory = document.getElementById("chat-history");
+    const input = document.getElementById("user-input");
+
+    /* ===== TYPING INDICATOR ===== */
+    function showTyping() {
+        const div = document.createElement("div");
+        div.id = "typing-indicator";
+        div.className = "message bot";
+        div.innerHTML = `
+        <div class="avatar"><img src="{% static 'assets/images/bot.png' %}"></div>
+        <div class="bubble typing">LawBot is typing
+            <span>.</span><span>.</span><span>.</span>
+        </div>`;
+        chatHistory.appendChild(div);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    function hideTyping() {
+        const t = document.getElementById("typing-indicator");
+        if (t) t.remove();
+    }
+
+    /* ===== DOWNLOAD FUNCTION ===== */
+    function downloadMessage(btn) {
+        // Get the text content from the bubble (sibling of the button's parent or similar)
+        // Structure: <div><div class="bubble">TEXT</div> ... <button>...</div>
+        const bubble = btn.parentElement.parentElement.querySelector('.bubble');
+        if (bubble) {
+            document.getElementById('download-content').value = bubble.innerHTML;
+            document.getElementById('download-form').submit();
+        }
+    }
+
+    /* ===== CHAT ===== */
+    async function sendMessage() {
+        const text = input.value.trim();
+        if (!text) return;
+
+        addMessage(text, "user");
+        input.value = "";
+
+        showTyping();
+
+        try {
+            const res = await fetch(`{% url 'chat_api' %}?message=${encodeURIComponent(text)}`);
+            const data = await res.json();
+            hideTyping();
+            addMessage(data.response, "bot");
+        } catch {
+            hideTyping();
+            addMessage("Server error. Please try again.", "bot");
+        }
+    }
+
+    function addMessage(text, sender) {
+        const msg = document.createElement("div");
+        msg.className = "message " + sender;
+
+        if (sender === "bot") {
+            msg.innerHTML = `
+            <div class="avatar"><img src="{% static 'assets/images/bot.png' %}"></div>
+            <div>
+                <div class="bubble">${text}</div>
+                <div class="timestamp">Now 
+                    <button onclick="downloadMessage(this)" style="background:#000; border:none; color:#fff; font-weight:bold; cursor:pointer; font-size:11px; margin-left:10px; padding:6px 12px; border-radius:8px; margin-top:5px;">
+                        Download .docx ⬇
+                    </button>
+                </div>
+            </div>`;
+        } else {
+            msg.innerHTML = `
+            <div><div class="bubble">${text}</div><div class="timestamp">Now</div></div>
+            <div class="avatar">You</div>`;
+        }
+
+        chatHistory.appendChild(msg);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+
+    document.getElementById("send-btn").onclick = sendMessage;
+    input.addEventListener("keypress", e => e.key === "Enter" && sendMessage());
+</script>
+
+{% endblock %}

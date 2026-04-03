@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Lawly | Advocate Register</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/images/logo/favicon.png' %}" />
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e7e3dc, #c89d66);
+        }
+
+        .register-container {
+            max-width: 850px;
+            margin: 80px auto;
+            padding: 40px 45px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.09);
+        }
+
+        .register-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-title h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1d;
+        }
+
+        /* INPUT STYLE */
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .quote-item input,
+        .quote-item select {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin-bottom: 20px;
+            font-size: 15px;
+            background: #fff;
+            transition: 0.25s;
+        }
+
+        .quote-item input:focus,
+        .quote-item select:focus {
+            border-color: #c89d66;
+            box-shadow: 0 0 8px rgba(200, 157, 102, 0.3);
+        }
+
+        .btn-register {
+            width: 100%;
+            background: #c89d66;
+            color: #fff;
+            height: 52px;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn-register:hover {
+            background: #a97c4a;
+            transform: translateY(-2px);
+        }
+
+        .small-text {
+            margin-top: -15px;
+            margin-bottom: 10px;
+            display: block;
+            color: #777;
+        }
+
+        .register-container a {
+            color: #c89d66;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navs">
+        <nav class="nav-bar nav-bar-2">
+            <div class="container">
+                <div class="box-content d-flex align-items-center justify-content-between">
+                    <div class="logo">
+                        <a href="index.html" class="logo-nav">
+                            <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}"
+                                alt="01 Logo" />
+                            <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}"
+                                alt="02 Logo" />
+                        </a>
+                        <a href="#open-nav-bar-menu" class="open-nav-bar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+
+                    <div class="nav-bar-link" id="open-nav-bar-menu">
+                        <ul class="level-1">
+                            <li><a href="{% url 'home' %}" class="active">Home</a></li>
+                        </ul>
+                    </div>
+
+                    <ul>
+                        <li><a class="btn-1" href="{% url 'advocate_login' %}">Advocate Sign In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- REGISTER PAGE -->
+    <div class="register-container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="register-title">
+            <h3>Create Advocate Account</h3>
+        </div>
+
+        <!-- ADVOCATE REGISTER FORM -->
+        <form method="POST" action="{% url 'advocate_register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label class="form-label">Advocate Name</label>
+                    <div class="quote-item">
+                        <input type="text" name="advocate_name" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Specialization</label>
+                    <div class="quote-item">
+                        <input type="text" name="specialization" required />
+                    </div>
+                </div>
+
+                <!-- QUALIFICATIONS -->
+                <div class="col-md-12">
+                    <label class="form-label">Qualifications</label>
+
+                    <div class="row mb-2">
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="LLB"> LLB</div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="LLM"> LLM</div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="PhD in Law"> PhD in Law
+                        </div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="Diploma in Cyber Law">
+                            Diploma in Cyber Law</div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="Diploma in Corporate Law">
+                            Diploma in Corporate Law</div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="Criminal Law Specialization">
+                            Criminal Law Specialization</div>
+                        <div class="col-md-4"><input type="checkbox" class="qual" value="Family Law Specialization">
+                            Family Law Specialization</div>
+                    </div>
+
+                    <input type="hidden" name="qualification" id="qualificationField">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <div class="quote-item">
+                        <input type="email" name="email" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <div class="quote-item">
+                        <input type="password" name="password" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Experience (Years)</label>
+                    <div class="quote-item">
+                        <input type="number" name="experience_years" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Location</label>
+                    <div class="quote-item">
+                        <input type="text" name="location" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">State Bar Council</label>
+                    <div class="quote-item">
+                        <select name="state_bar_council" required>
+                            <option value="">Select State Bar Council</option>
+                            <option>Andhra Pradesh</option>
+                            <option>Bihar</option>
+                            <option>Gujarat</option>
+                            <option>Jammu & Kashmir</option>
+                            <option>Jharkhand</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Chhattisgarh</option>
+                            <option>Karnataka</option>
+                            <option>Odisha</option>
+                            <option>Rajasthan</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Uttarakhand</option>
+                            <option>Meghalaya</option>
+                            <option>Manipur</option>
+                            <option>Tripura</option>
+                            <option>Assam, Nagaland, Mizoram & Arunachal Pradesh</option>
+                            <option>Kerala</option>
+                            <option>Tamil Nadu and Puducherry (Madras Bar Council)</option>
+                            <option>Maharashtra & Goa</option>
+                            <option>Punjab & Haryana</option>
+                            <option>Himachal Pradesh</option>
+                            <option>West Bengal</option>
+                            <option>Delhi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Enrollment Number</label>
+                    <div class="quote-item">
+                        <input type="text" name="enrollment_no" required />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Upload Bar Council ID Card</label>
+                    <div class="quote-item">
+                        <input type="file" name="bar_council_idcard" accept="image/*,application/pdf" required />
+                    </div>
+                    <span class="small-text">Accepted: JPG, PNG, PDF</span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Availability</label>
+                    <div class="quote-item">
+                        <select name="availability_status" required>
+                            <option value="True">Available</option>
+                            <option value="False">Not Available</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Profile Photo</label>
+                    <div class="quote-item">
+                        <input type="file" name="image" accept="image/*" required />
+                    </div>
+                    <span class="small-text">This photo appears on your public profile</span>
+                </div>
+
+                <div class="col-md-12">
+                    <button type="submit" class="btn-register">Register</button>
+                    <p class="mt-3 text-center">
+                        Already have an account? <a href="{% url 'advocate_login' %}">Login here</a>
+                    </p>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+
+    <!-- JS -->
+    <script>
+        // Qualifications → Comma string
+        const qualChecks = document.querySelectorAll('.qual');
+        const qualField = document.getElementById('qualificationField');
+
+        qualChecks.forEach(chk => {
+            chk.addEventListener('change', () => {
+                let selected = [];
+                qualChecks.forEach(c => {
+                    if (c.checked) selected.push(c.value);
+                });
+                qualField.value = selected.join(', ');
+            });
+        });
+    </script>
+
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

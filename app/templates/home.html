@@ -1,0 +1,975 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- :: Required Meta Tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance." />
+  <meta name="keywords"
+    content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor" />
+
+  <!-- :: Title -->
+  <title>Decision - Lawyer & Attorney</title>
+
+  <!-- :: Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+  <!-- :: Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+  <!-- :: Google Fonts (CORRECT – KEEP ONLY THIS) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+
+  <!-- :: Fontawesome -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+  <!-- :: Flaticon -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}" />
+
+  <!-- :: OWL Carousel -->
+  <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+
+  <!-- :: Nice Select CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+  <!-- :: Lity -->
+  <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}" />
+
+  <!-- :: Animate CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+
+  <!-- :: Main Style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+  <!-- :: Responsive CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+  <!-- :: FontAwesome CDN (Optional but OK) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta name="google" content="notranslate" />
+
+  <!-- :: Custom Styles -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #313851, #313851);
+    }
+
+    /* Hide Google Translate branding */
+    .goog-logo-link {
+      display: none !important;
+    }
+
+    .goog-te-gadget {
+      color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+      color: #333 !important;
+    }
+
+    .features.features-2 .features-box {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features.features-2 .features-box>.features-item {
+      flex: 1;
+      margin: 0;
+      padding: 35px 25px;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: none;
+    }
+
+    .features.features-2 .features-item i {
+      font-size: 36px;
+      margin-right: 15px;
+      color: #fff;
+    }
+
+    .features.features-2 .features-item h4,
+    .features.features-2 .features-item a {
+      color: #fff;
+      margin: 0;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .features.features-2 .features-box>.features-item:nth-of-type(odd) {
+      background-color: #313851 !important;
+    }
+
+    .features.features-2 .features-box>.features-item:nth-of-type(even) {
+      background-color: #C89D66 !important;
+    }
+
+    .features.features-2 .features-item:hover {
+      filter: brightness(1.06);
+      transition: 0.3s ease;
+    }
+
+    #playerWrapper {
+      position: relative !important;
+      z-index: 99999 !important;
+      overflow: visible !important;
+    }
+
+    body,
+    html {
+      overflow-x: hidden;
+      overflow-y: auto !important;
+    }
+  </style>
+  <style>
+    #fallback {
+      display: none !important;
+    }
+
+    /* ===== MODAL CLICK FIX (DO NOT REMOVE) ===== */
+
+    /* Force modal above all flex & overlays */
+    .modal {
+      position: fixed !important;
+      z-index: 200000 !important;
+      pointer-events: auto !important;
+    }
+
+    /* Fix backdrop layering */
+    .modal-backdrop {
+      z-index: 199999 !important;
+    }
+
+    /* Prevent flex containers from blocking modal clicks */
+    .features-box>.modal {
+      pointer-events: none !important;
+    }
+
+    .modal *,
+    .modal-content {
+      pointer-events: auto !important;
+    }
+
+    /* Prevent header / overlay conflicts */
+    .header,
+    .overlay,
+    .navs,
+    .features {
+      position: relative;
+      z-index: auto;
+    }
+
+    /* ================================
+   REMOVE UNDERLINE FROM ALL LINKS
+   ================================ */
+
+    /* Global */
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none !important;
+    }
+
+    /* Features section (extra safety) */
+    .features-item,
+    .features-item *,
+    .features-item:hover,
+    .features-item:hover * {
+      text-decoration: none !important;
+    }
+
+    /* Navbar links */
+    .nav-bar a,
+    .nav-bar a:hover {
+      text-decoration: none !important;
+    }
+
+    /* Modal cards */
+    .option-card a,
+    .option-card a:hover {
+      text-decoration: none !important;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- :: Loading -->
+  <div class="loading">
+    <div class="loading-box">
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Navs -->
+  <header class="navs">
+    <!-- :: Navbar -->
+    <nav class="nav-bar nav-bar-2">
+      <div class="container">
+        <div class="box-content d-flex align-items-center justify-content-between">
+
+          <!-- Logo -->
+          <div class="logo">
+            <a href="{% url 'home' %}" class="logo-nav">
+              <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+              <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+            </a>
+
+            <a href="#open-nav-bar-menu" class="open-nav-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+
+          <!-- Nav Links -->
+          <div class="nav-bar-link" id="open-nav-bar-menu">
+            <ul class="level-1">
+
+              {% if user.is_authenticated %}
+
+              <li><a href="{% url 'home' %}" class="active">Home</a></li>
+              <li><a href="{% url 'profile' %}">Profile</a></li>
+              <li><a href="{% url 'view_categories' %}">Laws</a></li>
+              <li><a href="{% url 'advocates' %}">Advocates</a></li>
+              <li><a href="{% url 'challan_form' %}">Challan</a></li>
+              <li><a href="{% url 'legal_office_list' %}">Legal Offices</a></li>
+              {% comment %} <li><a href="{% url 'logout' %}">Logout</a></li> {% endcomment %}
+
+              {% else %}
+
+              <li><a href="{% url 'login' %}">Sign In</a></li>
+              <li><a href="{% url 'register' %}">Sign Up</a></li>
+
+              {% endif %}
+
+            </ul>
+          </div>
+
+          <!-- Translate -->
+          <ul class="translate-nav">
+            <li>
+              <div id="google_translate_element"></div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+      <!-- 🔴 ROUND EMERGENCY BUTTON (FLOATING) -->
+      {% if user.is_authenticated %}
+      <form method="post" action="{% url 'send_sos' %}">
+        {% csrf_token %}
+        <button type="submit" class="emergency-fab" title="Send Emergency Alert">
+          🚨
+        </button>
+      </form>
+      {% else %}
+      <a href="{% url 'login' %}?next={% url 'home' %}" class="emergency-fab" title="Emergency">
+        🚨
+      </a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <!-- :: Search Box -->
+  <div class="search-box">
+    <form>
+      <input type="search" placeholder="Search Here.." />
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <i class="fas fa-times close-search"></i>
+  </div>
+
+  <!-- :: Menu Box -->
+  <div class="menu-box">
+    <div class="inner-menu">
+      <div class="website-info">
+        <a href="#" class="logo"><img class="img-fluid" src="{% static 'assets/images/logo/02_logo.png' %}"
+            alt="02 Logo" /></a>
+        <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm,
+          Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+      </div>
+
+      <div class="follow-us">
+        <h4>Follow Us</h4>
+        <ul class="icon-follow">
+          <li>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="exit-menu-box">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Header -->
+  <header class="header header-2" id="page">
+    <div class="header-owl header-owl-2 owl-carousel owl-theme">
+      <div class="sec-hero display-table"
+        style="background-image: url({% static 'assets/images/header/04_header.jpg' %})">
+        <div class="table-cell">
+          <div class="overlay"></div>
+          <div class="container">
+            {% if messages %}
+            <div class="row mt-3">
+              <div class="col-12">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+            <div class="box-hero d-flex align-items-center justify-content-between">
+              <div class="banner">
+
+                {% if user.is_authenticated %}
+
+                <!-- AFTER LOGIN CONTENT -->
+                <div class="headline-top">Welcome Back!</div>
+                <h1 class="handline">Your Legal Dashboard</h1>
+                <p class="about-website">
+                  Access laws, advocates, legal documents, challan services, and AI-powered legal assistance — all in
+                  one place.
+                </p>
+
+                {% else %}
+
+                <!-- BEFORE LOGIN CONTENT -->
+                <div class="headline-top">Need Any Help!</div>
+                <h1 class="handline">Get Legal Help From Us</h1>
+                <p class="about-website">
+                  Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions.
+                  Suitable For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.
+                </p>
+
+                {% endif %}
+
+              </div>
+
+              <section class="action-section">
+                <!-- Chatbot Card -->
+                <div class="chatbot-card">
+                  <h3 class="chatbot-title">LAWLY AI Chatbot</h3>
+                  <p class="chatbot-desc">
+                    Ask legal questions and get instant responses.
+                  </p>
+
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'chat_view' %}" class="chatbot-btn">
+                    Start Chatting
+                  </a>
+                  {% else %}
+                  <a href="{% url 'login' %}?next={% url 'chat_view' %}" class="chatbot-btn">
+                    Login to Start Chat
+                  </a>
+                  {% endif %}
+                </div>
+
+
+
+              </section>
+
+
+
+
+
+
+
+              <style>
+                /* ===== RIGHT ACTION WRAPPER ===== */
+                .right-action-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-end;
+                  gap: 20px;
+                }
+
+                /* ===== CHATBOT SECTION (UNCHANGED) ===== */
+                .chatbot-section {
+                  display: flex;
+                  justify-content: flex-end;
+                }
+
+                .chatbot-card {
+                  background: linear-gradient(135deg, #e7e3dc, #c89d66);
+                  padding: 25px 30px;
+                  border-radius: 12px;
+                  width: 320px;
+                  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                  backdrop-filter: blur(6px);
+                  text-align: center;
+                }
+
+                .chatbot-title {
+                  font-size: 22px;
+                  font-weight: 700;
+                  color: #1a1a1a;
+                  margin-bottom: 10px;
+                }
+
+                .chatbot-desc {
+                  font-size: 15px;
+                  color: #444;
+                  margin-bottom: 18px;
+                }
+
+                .chatbot-btn {
+                  display: inline-block;
+                  padding: 10px 22px;
+                  background: #262B3E;
+                  color: #fff;
+                  text-decoration: none;
+                  font-size: 16px;
+                  border-radius: 6px;
+                  transition: 0.3s ease-in-out;
+                }
+
+                .chatbot-btn:hover {
+                  background: #1e2233;
+                }
+
+                /* ===== ROUND EMERGENCY BUTTON ===== */
+                .emergency-fab {
+                  position: fixed;
+                  bottom: 30px;
+                  right: 30px;
+                  width: 68px;
+                  height: 68px;
+                  background: linear-gradient(135deg, #b30000, #ff1a1a);
+                  color: #fff;
+                  border-radius: 50%;
+                  border: none;
+                  cursor: pointer;
+                  font-size: 28px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 10px 25px rgba(179, 0, 0, 0.55);
+                  z-index: 9999;
+                  animation: pulse 2s infinite;
+                }
+
+                /* Hover */
+                .emergency-fab:hover {
+                  transform: scale(1.1);
+                }
+
+                /* Pulse Animation */
+                @keyframes pulse {
+                  0% {
+                    box-shadow: 0 0 0 0 rgba(255, 26, 26, 0.7);
+                  }
+
+                  70% {
+                    box-shadow: 0 0 0 18px rgba(255, 26, 26, 0);
+                  }
+
+                  100% {
+                    box-shadow: 0 0 0 0 rgba(255, 26, 26, 0);
+                  }
+                }
+
+                /* ===== MOBILE ===== */
+                @media (max-width: 768px) {
+                  .chatbot-card {
+                    width: 90%;
+                  }
+
+                  .emergency-fab {
+                    width: 60px;
+                    height: 60px;
+                    font-size: 24px;
+                    bottom: 20px;
+                    right: 20px;
+                  }
+                }
+              </style>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+
+  <!-- :: Features -->
+  <section class="features features-2">
+    <div class="container">
+      <div class="features-box">
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'view_categories' %}" class="features-item">
+          {% else %}
+          <a href="{% url 'login' %}?next={% url 'view_categories' %}" class="features-item">
+            {% endif %}
+            <i class="fa-solid fa-gavel"></i>
+            <div class="item-text">
+              <h4>Laws</h4>
+            </div>
+          </a>
+
+          {% if user.is_authenticated %}
+          <a href="{% url 'advocates' %}" class="features-item">
+            {% else %}
+            <a href="{% url 'login' %}?next={% url 'advocates' %}" class="features-item">
+              {% endif %}
+              <i class="fa-solid fa-user-tie"></i>
+              <div class="item-text">
+                <h4>Advocates</h4>
+              </div>
+            </a>
+
+            {% if user.is_authenticated %}
+            <a href="#" class="features-item" data-bs-toggle="modal" data-bs-target="#legalDocsModal">
+              {% else %}
+              <a href="{% url 'login' %}?next={% url 'legal_document_analysis' %}" class="features-item">
+                {% endif %}
+                <i class="fa-solid fa-file-lines"></i>
+                <div class="item-text">
+                  <h4>Legal Docs</h4>
+                </div>
+              </a>
+
+
+
+
+
+
+              {% if user.is_authenticated %}
+              <a href="{% url 'challan_form' %}" class="features-item">
+                {% else %}
+                <a href="{% url 'login' %}?next={% url 'challan_form' %}" class="features-item">
+                  {% endif %}
+                  <i class="fa-solid fa-receipt"></i>
+                  <div class="item-text">
+                    <h4>Challan</h4>
+                  </div>
+                </a>
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'legal_office_list' %}" class="features-item">
+                  {% else %}
+                  <a href="{% url 'login' %}?next={% url 'legal_office_list' %}" class="features-item">
+                    {% endif %}
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div class="item-text">
+                      <h4>Legal Offices</h4>
+                    </div>
+                  </a>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- :: About -->
+
+
+  <!-- :: Practice Area -->
+  <section class="practice-area practice-area-2 py-100-70">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+
+        {% for item in category_list %}
+        <div class="col-md-12 col-lg-4">
+          <div class="practice-area-item">
+            <div class="content">
+              <h4>
+                <a href="{% url 'view_laws_by_category' item.category %}">
+                  {{ item.category }}
+                </a>
+              </h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- :: Card Example -->
+
+  <!-- :: Blog Section -->
+
+
+  <div class="container">
+
+
+
+    <div class="container mt-4">
+      <h3 style="
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: white;
+  border-left: 5px solid #dc3545;
+  padding-left: 12px;
+">
+        Know Your Legal Rights
+      </h3>
+
+      <!-- Cards Row -->
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="card video-card">
+            <img src="https://img.youtube.com/vi/x9hrAkHHA9Y/maxresdefault.jpg" class="card-img-top"
+              alt="Video thumbnail">
+            <div class="card-body text-center">
+              <a href="https://www.youtube.com/watch?v=x9hrAkHHA9Y" target="_blank" class="btn btn-sm"
+                style="background-color:#c89d66; border-color:#c89d66; color:#fff;">
+                ▶ Watch on YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="card video-card">
+            <img src="https://img.youtube.com/vi/y2FupD0JiNs/maxresdefault.jpg" class="card-img-top"
+              alt="Video thumbnail">
+            <div class="card-body text-center">
+              <a href="https://www.youtube.com/watch?v=y2FupD0JiNs" target="_blank" class="btn btn-sm"
+                style="background-color:#c89d66; border-color:#c89d66; color:#fff;">
+                ▶ Watch on YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card video-card">
+            <img src="https://img.youtube.com/vi/VUAJF2q22Jg/maxresdefault.jpg" class="card-img-top"
+              alt="Video thumbnail">
+            <div class="card-body text-center">
+              <a href="https://www.youtube.com/watch?v=VUAJF2q22Jg" target="_blank" class="btn btn-sm"
+                style="background-color:#c89d66; border-color:#c89d66; color:#fff;">
+                ▶ Watch on YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br>
+
+
+  </div>
+  <!-- FLOATING VIDEO PLAYER -->
+  <div id="floatingPlayer" style="
+        display:none;
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        width:80%;
+        max-width:900px;
+        background:#000;
+        z-index:999999;
+        box-shadow:0 20px 60px rgba(0,0,0,0.6);
+        border-radius:10px;
+        overflow:hidden;
+     ">
+
+    <div style="text-align:right; padding:8px; background:#111;">
+      <button onclick="closePlayer()"
+        style="color:white; background:none; border:none; font-size:20px; cursor:pointer;">
+        ✕
+      </button>
+    </div>
+
+    <iframe id="shortPlayer" width="100%" height="500" style="border:none; display:block;"
+      allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+  </div>
+
+
+
+
+
+  <!-- AWARENESS SECTION HTML ABOVE -->
+
+  <div class="modal fade" id="legalDocsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title">Choose an Option</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="row g-4">
+
+            <!-- Card 1: Document Analysis -->
+            <div class="col-md-6">
+              <a href="{% url 'legal_document_analysis' %}" class="text-decoration-none">
+                <div class="card h-100 text-center shadow-sm option-card">
+                  <div class="card-body">
+                    <i class="fa-solid fa-magnifying-glass fa-2x mb-3 text-primary"></i>
+                    <h5 class="card-title">Document Analysis</h5>
+                    <p class="card-text">
+                      Upload legal documents and get AI-powered analysis & summary.
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card 2: Document Creation -->
+            <div class="col-md-6">
+              <a href="{% url 'template_list' %}" class="text-decoration-none">
+                <div class="card h-100 text-center shadow-sm option-card">
+                  <div class="card-body">
+                    <i class="fa-solid fa-file-circle-plus fa-2x mb-3 text-success"></i>
+                    <h5 class="card-title">Document Creation</h5>
+                    <p class="card-text">
+                      Create legal documents using guided templates.
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <style>
+    .option-card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+    }
+
+    .option-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+  <script>
+    function extractVideoId(url) {
+      if (!url) return null;
+
+      const patterns = [
+        /youtu\.be\/([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/
+      ];
+
+      for (let p of patterns) {
+        const m = url.match(p);
+        if (m) return m[1];
+      }
+      return null;
+    }
+
+    function playShort(videoUrl) {
+      console.log("VIDEO URL RECEIVED:", videoUrl); // 🔍 debug
+
+      const iframe = document.getElementById("shortPlayer");
+      const player = document.getElementById("floatingPlayer");
+
+      const videoId = extractVideoId(videoUrl);
+
+      if (!videoId) {
+        alert("Invalid YouTube link");
+        return;
+      }
+
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      player.style.display = "block";
+    }
+
+    function closePlayer() {
+      document.getElementById("shortPlayer").src = "";
+      document.getElementById("floatingPlayer").style.display = "none";
+    }
+  </script>
+
+
+
+  <!-- :: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'assets/images/logo/011_logo.png' %}" alt="Footer Logo" />
+            {% comment %} <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable
+              For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </li>
+            </ul> {% endcomment %}
+            <p>@ 2025 Lawly.</p>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+
+  </footer>
+
+
+
+  <!-- :: jQuery JS -->
+  <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+  <!-- :: Popper JS -->
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+  <!-- :: BootStrap JS -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- :: OWL Carousel -->
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+  <!-- :: Nice Select -->
+  <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+  <!-- :: Waypoints -->
+  <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+  <!-- :: CounterUp -->
+  <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+  <!-- :: Lity -->
+  <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+  <!-- :: Main JS -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- :: Ajax Script -->
+  <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+
+  <script>
+    function loadReel(instaLink) {
+      fetch(`/extract-reel/?url=${encodeURIComponent(instaLink)}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.mp4) {
+            document.getElementById("reelPlayer").src = data.mp4;
+          } else {
+            alert("Failed: " + data.error);
+          }
+        });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("emergencyBtn").addEventListener("click", function () {
+
+      if (!confirm("Are you sure you want to send an emergency alert?")) {
+        return;
+      }
+
+      fetch("{% url 'send_sos' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === "sent") {
+            alert("🚨 Emergency alert sent successfully.\nOur team will contact you shortly.");
+            window.location.href = "{% url 'home' %}";
+          }
+        });
+    });
+  </script>
+
+
+
+
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

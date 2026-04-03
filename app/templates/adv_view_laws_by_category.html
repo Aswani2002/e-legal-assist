@@ -1,0 +1,528 @@
+{% load static custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- :: Required Meta Tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout. Decision specially designed for Attorneys, Lawyers, Law Firm, Law Advisers, Legal Officers, Legal Advisers, Legal offices, Barristers at Law, Counsels, Solicitors, Advocates and other legal and law related services. Decision comes with most advanced and latest web technologies, enjoyable UX and the most beautiful design trends. Our template provides a platform to simply edit elements, choose styles and play around with the look and feel of your site!!" />
+  <meta name="keywords"
+    content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor" />
+
+  <!-- :: Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+  <!-- :: Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}" />
+
+  <!-- :: Title -->
+  <title>Decision - Lawyer &amp; Attorney HTML Template</title>
+
+  <!-- :: Google Fonts -->
+  <link rel="stylesheet"
+    href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" />
+
+  <!-- :: Fontawesome -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+  <!-- :: Flaticon -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}" />
+
+  <!-- :: OWL Carousel -->
+  <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+
+  <!-- :: Nice Select CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+
+  <!-- :: Lity -->
+  <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}" />
+
+  <!-- :: Animate CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+
+  <!-- :: Style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+  <!-- :: Style Responsive CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
+  <!-- [if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif] -->
+
+  <style>
+    /* ✅ Background Gradient */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e7e3dc, #c89d66);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ✅ White Container Styling */
+    .law-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      margin-top: calc(40vh - 220px);
+      padding: 40px 45px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    /* ✅ Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      /* spacing between arrow + text */
+      background: #c89d66;
+      color: #fff;
+      padding: 10px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 25px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .back-btn:hover {
+      background: #1b1f2f;
+      /* same hover color you wanted */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ✅ Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    th {
+      background: #262b3e;
+      color: #fff;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px;
+      font-size: 15px;
+      color: #333;
+      background: #fafafa;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    tr:hover td {
+      background: #f1ece3;
+    }
+
+    .open-link {
+      background: #c89d66;
+      padding: 6px 14px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .open-link:hover {
+      background: #a97c4a;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- :: Loading -->
+  <div class="loading">
+    <div class="loading-box">
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Navs -->
+  <header class="navs">
+    <!-- :: Navbar -->
+    <nav class="nav-bar nav-bar-2">
+      <div class="container">
+        <div class="box-content d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <a href="index.html" class="logo-nav">
+              <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+              <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+            </a>
+            <a href="#open-nav-bar-menu" class="open-nav-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+          <div class="nav-bar-link" id="open-nav-bar-menu">
+            <ul class="level-1">
+              <li>
+                <a href="{% url 'advocate_home' %}" class="active">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'advocate_profile_view' %}">Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'adv_view_categories' %}">Laws</a>
+              </li>
+
+              {% comment %} <li>
+                <a href="{% url 'advocates' %}">Advocates</a>
+              </li>
+              <li>
+                <a href="{% url 'challan_form' %}">Challan</a>
+              </li> {% endcomment %}
+              <li>
+                <a href="{% url 'advocate_appointments' %}">Appointments</a>
+              </li>
+            </ul>
+          </div>
+          <ul>
+            <div id="google_translate_element"></div>
+
+            <li>
+              {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- :: Search Box -->
+  {% comment %} <div class="search-box">
+    <form>
+      <input type="search" placeholder="Search Here.." />
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <i class="fas fa-times close-search"></i>
+  </div> {% endcomment %}
+
+  <!-- :: Menu Box -->
+  {% comment %} <div class="menu-box">
+    <div class="inner-menu">
+      <div class="website-info">
+        <a href="#" class="logo"><img class="img-fluid" src="{% static 'assets/images/logo/02_logo.png' %}"
+            alt="02 Logo" /></a>
+        <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm,
+          Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+      </div>
+
+      <div class="follow-us">
+        <h4>Follow Us</h4>
+        <ul class="icon-follow">
+          <li>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="exit-menu-box">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  <!-- :: Header -->
+  {% comment %} <header class="header header-2" id="page">
+    <div class="header-owl header-owl-2 owl-carousel owl-theme">
+      <div class="sec-hero display-table"
+        style="background-image: url({% static 'assets/images/header/04_header.jpg' %})">
+        <div class="table-cell">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="box-hero d-flex align-items-center justify-content-between">
+              <div class="banner">
+                <div class="headline-top">Need Any Help!</div>
+                <h1 class="handline">Get Legal Help From Us</h1>
+                <p class="about-website">Decision Are A Professional Attorney &amp; Lawyers Services Provider
+                  Institutions. Suitable For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+                <a class="btn-1 btn-2 move-section" href="#about-us">Let's Start</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> {% endcomment %}
+
+  <!-- :: Features -->
+  {% comment %} <section class="features features-2">
+    <div class="container">
+      <div class="features-box">
+        <div class="features-item">
+          <i class="flaticon-detective"></i>
+          <div class="item-text">
+            <span>With Extensive High Skill</span>
+            <h4>Expert Attorneys</h4>
+          </div>
+        </div>
+        <div class="features-item">
+          <i class="flaticon-oath"></i>
+          <div class="item-text">
+            <span><a href="{% url 'logout' %}">Documents</a></span>
+            <h4><a href="{% url 'template_list' %}">Documents</a></h4>
+          </div>
+        </div>
+        <div class="features-item">
+          <i class="flaticon-libra"></i>
+          <div class="item-text">
+            <span>Are High Then Other</span>
+            <h4>Court Performance</h4>
+          </div>
+        </div>
+        <div class="features-item">
+          <i class="flaticon-oath"></i>
+          <div class="item-text">
+            <span><a href="{% url 'logout' %}">Documents</a></span>
+            <h4><a href="{% url 'template_list' %}">Documents</a></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+  <!-- :: About -->
+  {% comment %} <section class="about about-2 py-100" id="about-us">
+    <div class="container"></div>
+  </section> {% endcomment %}
+
+  <!-- :: Practice Area -->
+
+  <!-- :: Blog Section -->
+
+  <!-- ✅ LAWS CONTAINER -->
+
+  <div class="law-container">
+    <h3 class="title">Laws in {{ category }}</h3>
+
+    <a href="{% url 'adv_view_categories' %}" class="back-btn">←</a>
+
+    <table>
+      <tr>
+        <th>Section No</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Source Link</th>
+      </tr>
+
+      {% for law in laws %}
+      <tr>
+        <td>{{ law.section_no }}</td>
+        <td>{{ law.title }}</td>
+        <td>{{ law.description }}</td>
+        <td>
+          {% if law.sourcelink %}
+          <a href="{{ law.sourcelink|ensure_absolute_url }}" target="_blank" class="open-link">Open</a>
+          {% else %}
+          -
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <!-- :: Footer -->
+  {% comment %} <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'assets/images/logo/03_logo.png' %}" alt="Footer Logo" />
+            <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm,
+              Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-2">
+          <div class="footer-title">
+            <h4>Company</h4>
+          </div>
+          <ul class="links">
+            <li>
+              <a href="01_about.html">About Us</a>
+            </li>
+            <li>
+              <a href="01_advisors.html">Our Advisors</a>
+            </li>
+            <li>
+              <a href="01_testimonial.html">Testimonial</a>
+            </li>
+            <li>
+              <a href="01_case-study.html">Case Studies</a>
+            </li>
+            <li>
+              <a href="02_blog.html">Blog</a>
+            </li>
+            <li>
+              <a href="01_contact.html">Contact</a>
+            </li>
+            <li>
+              <a href="01_careers.html">Careers</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-2">
+          <div class="footer-title">
+            <h4>Product</h4>
+          </div>
+          <ul class="links">
+            <li>
+              <a href="01_practice-areas.html">Practice Areas</a>
+            </li>
+            <li>
+              <a href="01_timeline.html">TimeLine</a>
+            </li>
+            <li>
+              <a href="01_sponsors.html">Sponsors</a>
+            </li>
+            <li>
+              <a href="01_faq.html">FAQs</a>
+            </li>
+            <li>
+              <a href="01_shop.html">Shop</a>
+            </li>
+            <li>
+              <a href="404_error.html">Error Page</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="newsletter">
+            <h5>Newsletter</h5>
+            <p>Sign up for industry alerts, our latest news, thoughts, and insights from Decision.</p>
+            <form>
+              <input type="email" name="email" placeholder="Your Email Address " />
+              <a href="#"><i class="fas fa-arrow-right"></i></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <div class="container">
+        <p>@ 2025 Lawly.</p>
+        <ul>
+          <li>
+            <a href="#">Terms &amp; Conditions</a>
+          </li>
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#">Sitemap</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer> {% endcomment %}
+
+  <!-- :: Button Dark Mode -->
+  <div class="dark-mode-decision">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- :: Scroll UP -->
+  <div class="scroll-up">
+    <a href="#page" class="move-section"><i class="fas fa-long-arrow-alt-up"></i></a>
+  </div>
+
+  <!-- :: jQuery JS -->
+  <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+  <!-- :: Popper JS -->
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+  <!-- :: BootStrap JS -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- :: OWL Carousel -->
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+  <!-- :: Nice Select -->
+  <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+  <!-- :: Waypoints -->
+  <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+  <!-- :: CounterUp -->
+  <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+  <!-- :: Lity -->
+  <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+  <!-- :: Main JS -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- :: Ajax Script -->
+  <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+</body>
+
+</html>

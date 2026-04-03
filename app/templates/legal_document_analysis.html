@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Lawly | AI Legal Document Analyzer</title>
+  <link rel="icon" type="image/png" href="{% static 'assets/images/logo/favicon.png' %}" />
+
+  <!-- FONTS + STYLES -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e7e3dc, #c89d66);
+      min-height: 100vh;
+    }
+
+    /* Hide Google Translate branding */
+    .goog-logo-link {
+        display: none !important;
+    }
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+    .goog-te-gadget .goog-te-combo {
+        color: #333 !important;
+    }
+
+    .analyzer-container {
+      max-width: 850px;
+      margin: 90px auto;
+      padding: 45px 50px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .analyzer-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #1d1d1d;
+    }
+
+    .analyzer-container p.subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 35px;
+      font-size: 15px;
+    }
+
+    /* FILE INPUT */
+    .upload-box label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .upload-box input[type="file"] {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 15px;
+      transition: 0.25s;
+    }
+
+    .upload-box input:focus {
+      border-color: #c89d66;
+      box-shadow: 0 0 8px rgba(200, 157, 102, 0.3);
+    }
+
+    .upload-box small {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* BUTTON */
+    .btn-analyze {
+      width: 100%;
+      background: #c89d66;
+      color: #fff;
+      height: 52px;
+      border: none;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 25px;
+      transition: 0.25s;
+    }
+
+    .btn-analyze:hover {
+      background: #a97c4a;
+      transform: translateY(-2px);
+    }
+
+    /* AI RESULT */
+    .result-box {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 14px;
+      background: #faf8f5;
+      border-left: 5px solid #c89d66;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .result-box h4 {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .ai-output {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .disclaimer {
+      font-size: 13px;
+      color: #777;
+      margin-top: 20px;
+    }
+
+    /* LOADING */
+    .loading-box {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 500;
+    }
+
+    /* ERROR */
+    .error-box {
+      background: #f8d7da;
+      color: #842029;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #c89d66;
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .back-btn:hover {
+            background: #1b1f2f;
+            transform: translateY(-2px);
+        }
+  </style>
+</head>
+
+<body>
+
+  <div class="analyzer-container">
+    <a href="{% url 'home' %}" class="back-btn">←</a>
+    <div id="google_translate_element" style="margin-bottom: 20px;"></div>
+
+
+    <!-- TITLE -->
+    <h2>AI Legal Document Analyzer</h2>
+    <p class="subtitle">
+      Upload your legal document and receive a simplified explanation powered by AI.
+    </p>
+
+    <!-- UPLOAD FORM -->
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="upload-box">
+        <label>Upload Legal Document</label>
+        <input type="file" name="document" required />
+        <small>Supported formats: PDF, DOCX, TXT</small>
+      </div>
+
+      <button type="submit" class="btn-analyze">
+        <i class="fas fa-brain me-1"></i> Analyze Document
+      </button>
+    </form>
+
+    <!-- LOADING -->
+    {% if loading %}
+    <div class="loading-box">
+      ⏳ Analyzing document... please wait.
+    </div>
+    {% endif %}
+
+    <!-- AI RESULT -->
+    {% if ai_summary %}
+    <div class="result-box">
+      <h4>📄 AI Explanation</h4>
+      <div class="ai-output">
+        {{ ai_summary|safe }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ERROR -->
+    {% if error %}
+    <div class="error-box">
+      {{ error }}
+    </div>
+    {% endif %}
+
+  </div>
+
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

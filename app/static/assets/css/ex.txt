@@ -1,0 +1,29 @@
+.nav-bar .nav-bar-link ul li a{
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 30px 0;
+    margin: 0 20px 0 0px;
+    position: relative;
+    display: block;
+    text-transform: capitalize;
+}
+.nav-bar .nav-bar-link ul li a:before{
+    content: '';
+    background-color: #C89D66;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.nav-bar .nav-bar-link ul li a:hover:before,
+.nav-bar .nav-bar-link ul li .color-active:before{
+    width: 100%;
+}
+.nav-bar.active .nav-bar-link ul li a{
+    color: #262B3E;
+}

@@ -1,0 +1,187 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- :: Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>My Appointments</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e7e3dc, #c89d66);
+            margin: 0;
+            padding: 0;
+        }
+
+        .law-container {
+            max-width: 800px;
+            margin: 60px auto;
+            margin-top: calc(40vh - 260px);
+            padding: 40px 45px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #c89d66;
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .back-btn:hover {
+            background: #1b1f2f;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f4f1eb;
+            padding: 14px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .status-pending {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        .status-scheduled {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .status-cancelled {
+            color: #dc3545;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- :: NAVBAR (UNCHANGED) -->
+<header class="navs">
+    <nav class="nav-bar nav-bar-2">
+        <div class="container">
+            <div class="box-content d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="{% url 'home' %}" class="logo-nav">
+                        <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}">
+                        <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}">
+                    </a>
+                </div>
+
+                <div class="nav-bar-link">
+                    <ul class="level-1">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'profile' %}">Profile</a></li>
+                        <li><a href="{% url 'view_categories' %}">Laws</a></li>
+                        <li><a href="{% url 'advocates' %}">Advocates</a></li>
+                        <li><a href="{% url 'legal_office_list' %}">Legal Offices</a></li>
+                    </ul>
+                </div>
+
+                <ul>
+                    {% comment %} <li><a class="btn-1" href="{% url 'logout' %}">Logout</a></li> {% endcomment %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- :: MAIN CONTENT -->
+<div class="law-container">
+
+    <h3 class="title">My Appointments</h3>
+
+    <a href="{% url 'advocates' %}" class="back-btn">←</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Advocate</th>
+                <th>Appointment Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for a in appointments %}
+            <tr>
+                <td>{{ a.advocate.advocate_name }}</td>
+                <td>{{ a.appointment_date }}</td>
+                <td>
+                    {% if a.status == "Pending" %}
+                        <span class="status-pending">⏳ Pending</span>
+                    {% elif a.status == "Scheduled" %}
+                        <span class="status-scheduled">✔ Scheduled</span>
+                    {% elif a.status == "Cancelled" %}
+                        <span class="status-cancelled">❌ Cancelled</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="3" style="text-align:center; padding:20px;">
+                    No appointments found
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

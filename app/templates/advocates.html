@@ -1,0 +1,488 @@
+﻿{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- :: Required Meta Tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description"
+    content="Decision is a Lawyer & Attorney HTML Template. Designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout. Decision specially designed for Attorneys, Lawyers, Law Firm, Law Advisers, Legal Officers, Legal Advisers, Legal offices, Barristers at Law, Counsels, Solicitors, Advocates and other legal and law related services. Decision comes with most advanced and latest web technologies, enjoyable UX and the most beautiful design trends. Our template provides a platform to simply edit elements, choose styles and play around with the look and feel of your site!!">
+  <meta name="keywords"
+    content="accountant, advocate, attorneys, barrister, business, consultancy, counsel, finance, justice, law, lawyer, legal adviser, legal office, solicitor">
+
+  <!-- :: Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+  <!-- :: Favicon -->
+  <link rel="icon" type="image/png" href="{% static 'assets/images/favicon.png' %}">
+
+  <!-- :: Title -->
+  <title>Decision - Lawyer &amp; Attorney HTML Template</title>
+
+  <!-- :: Google Fonts -->
+  <link rel="stylesheet"
+    href="../../css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+
+  <!-- :: Fontawesome -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}">
+
+  <!-- :: Flaticon -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/css/flaticon.css' %}">
+
+  <!-- :: OWL Carousel -->
+  <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+
+  <!-- :: Nice Select CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+
+  <!-- :: Lity -->
+  <link rel="stylesheet" href="{% static 'assets/css/lity.min.css' %}">
+
+  <!-- :: Animate CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+  <!-- :: Style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+  <!-- :: Style Responsive CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+  <!--[if lt IE 9]>
+                <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+  <style>
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #c89d66;
+      color: #fff;
+      padding: 10px 26px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 25px;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .back-btn:hover {
+      background: #1b1f2f;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- :: Loading -->
+  <div class="loading">
+    <div class="loading-box">
+      <div class="sk-fading-circle">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Navs -->
+  <header class="navs">
+    <!-- :: Navbar -->
+    <nav class="nav-bar nav-bar-2">
+      <div class="container">
+        <div class="box-content d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <a href="index.html" class="logo-nav">
+              <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}" alt="01 Logo" />
+              <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}" alt="02 Logo" />
+            </a>
+            <a href="#open-nav-bar-menu" class="open-nav-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </div>
+          <div class="nav-bar-link" id="open-nav-bar-menu">
+            <ul class="level-1">
+              <li>
+                <a href="{% url 'home' %}" class="active">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'profile' %}">Profile</a>
+              </li>
+              <li>
+                <a href="{% url 'view_categories' %}">Laws</a>
+              </li>
+
+              <li>
+                <a href="{% url 'advocates' %}">Advocates</a>
+              </li>
+              <li>
+                <a href="{% url 'challan_form' %}">Challan</a>
+              </li>
+              <li>
+                <a href="{% url 'legal_office_list' %}">Legal Offices</a>
+
+              </li>
+            </ul>
+          </div>
+          <ul>
+            <div id="google_translate_element"></div>
+
+            <li>
+              {% comment %} <a class="btn-1" href="{% url 'login' %}">Sign In</a> {% endcomment %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- :: Search Box -->
+  <div class="search-box">
+    <form>
+      <input type="search" placeholder="Search Here..">
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <i class="fas fa-times close-search"></i>
+  </div>
+  <!-- :: Menu Box -->
+  <div class="menu-box">
+    <div class="inner-menu">
+      <div class="website-info">
+        <a href="#" class="logo"><img class="img-fluid" src="{% static 'assets/images/logo/02_logo.png' %}"
+            alt="02 Logo"></a>
+        <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm,
+          Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+      </div>
+      <div class="contact-info">
+        <h4>Contact Info</h4>
+        <div class="contact-box">
+          <i class="flaticon-call"></i>
+          <div class="box">
+            <p>+(002) 0121-2843-661</p>
+            <p>+(002) 0106-8710-594</p>
+          </div>
+        </div>
+        <div class="contact-box">
+          <i class="flaticon-email"></i>
+          <div class="box">
+            <p>AR-Coder@arcoder.com</p>
+            <p>Support@arcoder.com</p>
+          </div>
+        </div>
+        <div class="contact-box">
+          <i class="flaticon-location"></i>
+          <div class="box">
+            <p>Menouf City , El-Menoufia, Egypt.</p>
+            <p>Shibin El-Kom , El-Menoufia, Egypt.</p>
+          </div>
+        </div>
+      </div>
+      <div class="follow-us">
+        <h4>Follow Us</h4>
+        <ul class="icon-follow">
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+      <div class="exit-menu-box">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- :: Breadcrumb Header -->
+  <section class="breadcrumb-header" id="page"
+    style="background-image: url({% static 'assets/images/header/07_header.jpg' %})">
+    <div class="overlay">
+
+    </div>
+    <div class="container">
+      <a href="{% url 'home' %}" class="back-btn">←</a>
+      <div class="container" style="margin-top:30px; text-align:right;">
+        <a href="{% url 'user_appointments' %}" class="btn-1" style="padding:12px 28px; font-size:15px;">
+          My Appointments
+        </a>
+      </div>
+
+      {% comment %} <div class="row">
+        <div class="col-md-6">
+          <div class="banner">
+            <h1>Advisors 1</h1>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><i class="fas fa-angle-right"></i></li>
+              <li>Advisors 1</li>
+            </ul>
+          </div>
+        </div>
+      </div> {% endcomment %}
+    </div>
+
+  </section>
+
+  <!-- :: Advisors -->
+  <section class="advisors advisors-home-1 py-100-70">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="sec-title text-center">
+            <h2>Team</h2>
+            <h3>Our Advisors</h3>
+            <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable For Law Firm,
+              Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Form -->
+      <div class="row mb-5">
+        <div class="col-md-10 offset-md-1">
+          <form method="GET" action="{% url 'advocates' %}" class="p-4"
+            style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <div class="row align-items-end">
+              <div class="col-md-4">
+                <div class="form-group mb-0">
+                  <label for="specialization" style="font-weight: 600; color: #1b1f2f;">Specialization</label>
+                  <input type="text" name="specialization" id="specialization" class="form-control"
+                    placeholder="e.g. Criminal, Civil..." value="{{ request.GET.specialization }}"
+                    style="border-radius: 5px; height: 50px;">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-0">
+                  <label for="location" style="font-weight: 600; color: #1b1f2f;">Location</label>
+                  <input type="text" name="location" id="location" class="form-control" placeholder="e.g. New York..."
+                    value="{{ request.GET.location }}" style="border-radius: 5px; height: 50px;">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" class="btn-1 w-100"
+                  style="height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                  <i class="fas fa-search mr-2"></i> Search Advocates
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="row">
+        {% for adv in advocates %}
+        <div class="col-md-6 col-lg-4">
+          <div class="advisors-box">
+
+            <!-- IMAGE BOX -->
+            <div class="img-box">
+              <a href="{% url 'advocate_detail' adv.advocate_id %}" class="open-post">
+
+
+
+
+
+
+
+                {% if adv.image %}
+                <img class="img-fluid" src="{{ adv.image.url }}" alt="{{ adv.advocate_name }}"
+                  style="width: 100%; height: 350px; object-fit: cover; border-radius: 8px;">
+                {% else %}
+                <img class="img-fluid" src="{% static 'assets/images/default-profile.png' %}" alt="Default Profile"
+                  style="width: 100%; height: 350px; object-fit: cover; border-radius: 8px;">
+                {% endif %}
+
+              </a>
+
+              {% comment %} <div class="img-box-hover">
+                <ul>
+                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+              </div> {% endcomment %}
+            </div>
+
+            <!-- TEXT BOX -->
+            <div class="text-box text-center">
+              <h5>{{ adv.advocate_name }}</h5>
+              <span>{{ adv.specialization }}</span>
+            </div>
+
+          </div>
+        </div>
+        {% empty %}
+        <p>No advocates registered yet.</p>
+        {% endfor %}
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- :: Testimonial -->
+
+
+  <!-- :: Blog -->
+
+
+  <!-- :: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'assets/images/logo/011_logo.png' %}" alt="Footer Logo" />
+            {% comment %} <p>Decision Are A Professional Attorney &amp; Lawyers Services Provider Institutions. Suitable
+              For Law Firm, Injury Law, Traffic Ticket Attorney, Legacy And More.</p>
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+              </li>
+            </ul> {% endcomment %}
+            <p>@ 2025 Lawly.</p>
+          </div>
+        </div>
+
+        {% comment %} <div class="col-sm-6 col-md-6 col-lg-2">
+          <div class="footer-title">
+            <h4>Company</h4>
+          </div>
+          <ul class="links">
+            <li>
+              <a href="01_about.html">About Us</a>
+            </li>
+            <li>
+              <a href="01_advisors.html">Our Advisors</a>
+            </li>
+            <li>
+              <a href="01_testimonial.html">Testimonial</a>
+            </li>
+            <li>
+              <a href="01_case-study.html">Case Studies</a>
+            </li>
+            <li>
+              <a href="02_blog.html">Blog</a>
+            </li>
+            <li>
+              <a href="01_contact.html">Contact</a>
+            </li>
+            <li>
+              <a href="01_careers.html">Careers</a>
+            </li>
+          </ul>
+        </div> {% endcomment %}
+
+        {% comment %} <div class="col-sm-6 col-md-6 col-lg-2">
+          <div class="footer-title">
+            <h4>Product</h4>
+          </div>
+          <ul class="links">
+            <li>
+              <a href="01_practice-areas.html">Practice Areas</a>
+            </li>
+            <li>
+              <a href="01_timeline.html">TimeLine</a>
+            </li>
+            <li>
+              <a href="01_sponsors.html">Sponsors</a>
+            </li>
+            <li>
+              <a href="01_faq.html">FAQs</a>
+            </li>
+            <li>
+              <a href="01_shop.html">Shop</a>
+            </li>
+            <li>
+              <a href="404_error.html">Error Page</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="newsletter">
+            <h5>Newsletter</h5>
+            <p>Sign up for industry alerts, our latest news, thoughts, and insights from Decision.</p>
+            <form>
+              <input type="email" name="email" placeholder="Your Email Address " />
+              <a href="#"><i class="fas fa-arrow-right"></i></a>
+            </form>
+          </div>
+        </div> {% endcomment %}
+      </div>
+    </div>
+
+
+  </footer>
+
+  <!-- :: Button Dark Mode -->
+  {% comment %} <div class="dark-mode-decision">
+    <i class="fas fa-moon"></i>
+  </div> {% endcomment %}
+
+  <!-- :: Scroll UP -->
+  {% comment %} <div class="scroll-up">
+    <a href="#page" class="move-section">
+      <i class="fas fa-long-arrow-alt-up"></i>
+    </a>
+  </div> {% endcomment %}
+
+  <!-- :: jQuery JS -->
+  <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+
+  <!-- :: Popper JS -->
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+
+  <!-- :: BootStrap JS -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- :: OWL Carousel -->
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+  <!-- :: Nice Select -->
+  <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+
+  <!-- :: Waypoints -->
+  <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+
+  <!-- :: CounterUp -->
+  <script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+  <!-- :: Lity -->
+  <script src="{% static 'assets/js/lity.min.js' %}"></script>
+
+  <!-- :: Main JS -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <!-- :: Ajax Script -->
+  <script src="{% static 'assets/js/ajax-script.js' %}"></script>
+</body>
+
+</html>

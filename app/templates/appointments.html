@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- :: Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Appointment Requests</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/all.min.css' %}">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e7e3dc, #c89d66);
+            margin: 0;
+        }
+
+        .law-container {
+            max-width: 950px;
+            margin: 60px auto;
+            margin-top: calc(40vh - 260px);
+            padding: 40px 45px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 35px rgba(0,0,0,0.15);
+        }
+
+        .title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #c89d66;
+            color: #fff;
+            padding: 10px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .back-btn:hover {
+            background: #1b1f2f;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f4f1eb;
+            padding: 14px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        .status-pending { color: #ff9800; font-weight: 600; }
+        .status-scheduled { color: #28a745; font-weight: 600; }
+        .status-cancelled { color: #dc3545; font-weight: 600; }
+    </style>
+</head>
+
+<body>
+
+<!-- :: NAVBAR (SAME AS REFERENCE) -->
+<header class="navs">
+    <nav class="nav-bar nav-bar-2">
+        <div class="container">
+            <div class="box-content d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="{% url 'home' %}" class="logo-nav">
+                        <img class="img-fluid one" src="{% static 'assets/images/logo/01_logo.png' %}">
+                        <img class="img-fluid two" src="{% static 'assets/images/logo/02_logo.png' %}">
+                    </a>
+                </div>
+
+                <div class="nav-bar-link">
+                    <ul class="level-1">
+                        <li><a href="{% url 'advocate_home' %}">Home</a></li>
+                        <li><a href="{% url 'advocate_profile_view' %}">Profile</a></li>
+                        <li><a href="{% url 'adv_view_categories' %}">Laws</a></li>
+                        <li><a href="{% url 'advocate_appointments' %}">Appointments</a></li>
+                        {% comment %} <li><a href="{% url 'legal_office_list' %}">Legal Offices</a></li> {% endcomment %}
+                    </ul>
+                </div>
+
+                <ul>
+                    <li>
+                        {% comment %} <a class="btn-1" href="{% url 'advocate_logout' %}">
+                            Logout
+                        </a> {% endcomment %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- :: MAIN CONTENT -->
+<div class="law-container">
+
+    <h3 class="title">Appointment Requests</h3>
+
+    <a href="{% url 'advocate_home' %}" class="back-btn">←</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Appointment Date</th>
+                <th>Status</th>
+                <th style="width:220px;">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for a in appointments %}
+            <tr>
+                <td>{{ a.user.fullname }}</td>
+                <td>{{ a.appointment_date }}</td>
+                <td>
+                    {% if a.status == "Pending" %}
+                        <span class="status-pending">⏳ Pending</span>
+                    {% elif a.status == "Scheduled" %}
+                        <span class="status-scheduled">✔ Scheduled</span>
+                    {% else %}
+                        <span class="status-cancelled">❌ Cancelled</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if a.status == "Pending" %}
+                        <a href="{% url 'approve_appointment' a.appointment_id %}"
+                           class="btn btn-success btn-sm">
+                            Approve
+                        </a>
+                        <a href="{% url 'reject_appointment' a.appointment_id %}"
+                           class="btn btn-danger btn-sm">
+                            Reject
+                        </a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4" style="text-align:center; padding:20px;">
+                    No appointment requests found
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>
