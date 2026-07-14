@@ -1,0 +1,11 @@
+Django>=5.0
+gunicorn
+whitenoise>=6.0.0
+dj-database-url
+python-docx
+pdfplumber
+razorpay
+google-generativeai
+requests
+psycopg2-binary
+python-dotenv

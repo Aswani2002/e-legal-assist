@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: django-login-app
+    env: python
+    buildCommand: "bash build.sh"
+    startCommand: "gunicorn project.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: django-db
+          property: connectionString
+      - key: RAPIDAPI_KEY
+        sync: false
+      - key: RAZOR_KEY_ID
+        sync: false
+      - key: RAZOR_KEY_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+
+databases:
+  - name: django-db
+    plan: free
